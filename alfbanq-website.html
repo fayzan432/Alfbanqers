@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALF BANQ Mortgage Broker | Dubai's Premier Mortgage Specialists</title>
+  <meta name="description" content="Dubai's leading mortgage broker. Access 25+ UAE banks, the best rates, and expert guidance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      --navy: #0D1B3E;
+      --navy-dark: #080F22;
+      --navy-mid: #152247;
+      --gold: #C9A257;
+      --gold-light: #E8C97A;
+      --gold-dark: #A07C35;
+      --off-white: #F5F0E8;
+      --text-muted: #7A8699;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy-dark);
+      color: var(--off-white);
+      font-family: 'Josefin Sans', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4 { font-family: 'Cinzel', serif; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--navy-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+    /* ── UTILITIES ── */
+    .gold-text {
+      background: linear-gradient(135deg, #C9A257 0%, #E8C97A 50%, #A07C35 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    .gold-shimmer {
+      background: linear-gradient(90deg,#A07C35 0%,#E8C97A 40%,#C9A257 50%,#E8C97A 60%,#A07C35 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes tower-glow {
+      0%,100% { filter: drop-shadow(0 0 6px rgba(201,162,87,.25)); }
+      50%      { filter: drop-shadow(0 0 22px rgba(201,162,87,.65)); }
+    }
+    .burj-glow { animation: tower-glow 4s ease-in-out infinite; }
+    @keyframes twinkle {
+      0%,100% { opacity:.08; }
+      50%     { opacity:.9; }
+    }
+    @keyframes float-up {
+      0%   { transform:translateY(0) scale(1);   opacity:.8; }
+      100% { transform:translateY(-110vh) scale(.2); opacity:0; }
+    }
+    @keyframes bounce-down {
+      0%,100% { transform:translateY(0); }
+      50%     { transform:translateY(8px); }
+    }
+    @keyframes pulse-ring {
+      0%  { transform:scale(.85); opacity:.7; }
+      70% { transform:scale(1.2); opacity:0; }
+      100%{ transform:scale(1.2); opacity:0; }
+    }
+    .section-label {
+      font-size:.68rem; letter-spacing:.38em; text-transform:uppercase; color:var(--gold);
+      font-family:'Josefin Sans',sans-serif;
+    }
+    .gold-divider {
+      width:80px; height:2px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      margin:0 auto;
+    }
+    .btn-gold {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      background:linear-gradient(135deg,#A07C35 0%,#E8C97A 50%,#C9A257 100%);
+      background-size:200% auto;
+      color:#080F22; font-family:'Josefin Sans',sans-serif; font-weight:700;
+      letter-spacing:.15em; text-transform:uppercase;
+      border:none; border-radius:2px; cursor:pointer;
+      transition:background-position .4s ease, transform .25s ease, box-shadow .3s ease;
+      text-decoration:none;
+    }
+    .btn-gold:hover { background-position:right center; transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,162,87,.4); }
+    .btn-outline {
+      display:inline-flex; align-items:center; justify-content:center;
+      background:transparent; border:1px solid var(--gold); color:var(--gold);
+      font-family:'Josefin Sans',sans-serif; font-weight:600;
+      letter-spacing:.12em; text-transform:uppercase;
+      border-radius:2px; cursor:pointer;
+      transition:all .3s ease; text-decoration:none;
+    }
+    .btn-outline:hover { background:rgba(201,162,87,.1); transform:translateY(-1px); }
+    .input-field {
+      background:rgba(255,255,255,.04); border:1px solid rgba(201,162,87,.25);
+      color:var(--off-white); font-family:'Josefin Sans',sans-serif;
+      font-size:.85rem; letter-spacing:.05em; width:100%;
+      padding:14px 18px; border-radius:2px; outline:none;
+      transition:border-color .3s ease, background .3s ease;
+    }
+    .input-field:focus { border-color:var(--gold); background:rgba(201,162,87,.05); }
+    .input-field::placeholder { color:var(--text-muted); }
+    .input-label {
+      display:block; font-size:.68rem; color:var(--gold);
+      letter-spacing:.2em; text-transform:uppercase;
+      font-family:'Josefin Sans',sans-serif; margin-bottom:6px;
+    }
+    /* reveal animations */
+    .reveal { opacity:0; transform:translateY(32px); }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      transition:background .4s ease, box-shadow .4s ease;
+    }
+    #navbar.scrolled {
+      background:rgba(8,15,34,.96) !important;
+      backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      box-shadow:0 1px 0 rgba(201,162,87,.2);
+    }
+    .nav-inner {
+      max-width:1280px; margin:0 auto; padding:0 48px;
+      display:flex; align-items:center; justify-content:space-between;
+      height:80px;
+    }
+    @media(max-width:900px){ .nav-inner{padding:0 24px;} }
+    .nav-logo { display:flex; flex-direction:column; line-height:1; text-decoration:none; }
+    .nav-logo-main {
+      font-family:'Cinzel',serif; font-weight:700;
+      letter-spacing:.25em; font-size:1.1rem; color:var(--off-white);
+    }
+    .nav-logo-sub {
+      font-size:.5rem; letter-spacing:.45em; text-transform:uppercase;
+      color:var(--gold); margin-top:3px;
+    }
+    .nav-links { display:flex; align-items:center; gap:32px; }
+    @media(max-width:900px){ .nav-links{ display:none; } }
+    .nav-link {
+      font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--text-muted); font-family:'Josefin Sans',sans-serif;
+      font-weight:500; cursor:pointer; border:none; background:none;
+      transition:color .2s ease;
+    }
+    .nav-link:hover { color:var(--gold); }
+    .nav-cta { display:flex; align-items:center; gap:16px; }
+    @media(max-width:900px){ .nav-cta .btn-gold{ font-size:.65rem; padding:10px 18px; } }
+    .nav-phone {
+      font-size:.72rem; letter-spacing:.08em; color:var(--gold);
+      font-family:'Josefin Sans',sans-serif; font-weight:600;
+      text-decoration:none; display:flex; align-items:center; gap:6px;
+    }
+    @media(max-width:1100px){ .nav-phone{ display:none; } }
+    .hamburger {
+      display:none; background:none; border:none; cursor:pointer;
+      color:var(--gold); padding:4px;
+    }
+    @media(max-width:900px){ .hamburger{ display:block; } }
+    #mobile-menu {
+      display:none; flex-direction:column; gap:20px;
+      padding:24px; background:rgba(8,15,34,.98);
+      backdrop-filter:blur(20px);
+      border-top:1px solid rgba(201,162,87,.15);
+    }
+    #mobile-menu.open { display:flex; }
+    .mobile-link {
+      font-size:.8rem; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--text-muted); font-family:'Josefin Sans',sans-serif;
+      cursor:pointer; border:none; background:none; text-align:left;
+      transition:color .2s; padding:4px 0;
+    }
+    .mobile-link:hover { color:var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height:100vh; position:relative;
+      display:flex; align-items:center; justify-content:center; overflow:hidden;
+      background:linear-gradient(160deg,#050C1E 0%,#0D1B3E 45%,#080F22 100%);
+    }
+    #stars, #particles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .star {
+      position:absolute; border-radius:50%; background:#fff;
+    }
+    .particle {
+      position:absolute; border-radius:50%;
+      background:rgba(201,162,87,.75);
+      animation:float-up linear infinite;
+    }
+    .hero-glow {
+      position:absolute; right:8%; bottom:0; width:42%; max-width:420px; height:70%;
+      background:radial-gradient(ellipse at center bottom,rgba(201,162,87,.12) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    #burj-wrap {
+      position:absolute; bottom:0; right:5%;
+      width:clamp(100px,16vw,240px); pointer-events:none; z-index:1;
+    }
+    .horizon-line {
+      position:absolute; bottom:0; left:0; right:0; height:2px; pointer-events:none;
+      background:linear-gradient(90deg,transparent 0%,rgba(201,162,87,.3) 30%,rgba(201,162,87,.6) 60%,rgba(201,162,87,.2) 85%,transparent 100%);
+    }
+    .hero-content {
+      position:relative; z-index:10; max-width:1280px; margin:0 auto;
+      padding:120px 48px 100px; width:100%;
+    }
+    @media(max-width:768px){ .hero-content{ padding:100px 24px 80px; } }
+    .hero-inner { max-width:680px; }
+    .hero-label { display:flex; align-items:center; gap:12px; margin-bottom:28px; }
+    .hero-label-line { width:40px; height:1px; background:var(--gold); }
+    .hero-h1 {
+      font-family:'Cinzel',serif; font-weight:700; line-height:1.12;
+      font-size:clamp(2.2rem,5.5vw,4.4rem); margin-bottom:22px;
+    }
+    .hero-sub {
+      font-size:clamp(.9rem,1.6vw,1.05rem); color:var(--text-muted);
+      line-height:1.75; letter-spacing:.03em; max-width:520px; margin-bottom:36px;
+    }
+    .hero-btns { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:56px; }
+    .hero-btns .btn-gold, .hero-btns .btn-outline { padding:16px 32px; font-size:.72rem; }
+    .hero-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    @media(min-width:600px){ .hero-stats{ grid-template-columns:repeat(4,1fr); } }
+    .stat-item {}
+    .stat-bar { width:28px; height:2px; background:var(--gold); opacity:.6; margin-bottom:6px; }
+    .stat-value {
+      font-family:'Cinzel',serif; font-weight:700;
+      font-size:clamp(1.2rem,2.2vw,1.6rem);
+    }
+    .stat-label {
+      font-size:.65rem; letter-spacing:.1em; color:var(--text-muted);
+      text-transform:uppercase; font-family:'Josefin Sans',sans-serif;
+    }
+    .scroll-indicator {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      color:rgba(201,162,87,.5); cursor:pointer; z-index:10; border:none; background:none;
+    }
+    .scroll-indicator span { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; }
+    .scroll-arrow { animation:bounce-down 1.8s ease-in-out infinite; }
+    .rera-badge {
+      position:absolute; top:100px; right:48px; z-index:10;
+      display:none; flex-direction:column; align-items:center; gap:4px;
+      padding:14px 18px;
+      background:rgba(201,162,87,.07); border:1px solid rgba(201,162,87,.25);
+      border-radius:4px;
+    }
+    @media(min-width:640px){ .rera-badge{ display:flex; } }
+    .rera-stars { display:flex; gap:2px; }
+    .rera-cert { font-size:.62rem; color:var(--gold); letter-spacing:.12em; font-family:'Josefin Sans',sans-serif; text-transform:uppercase; }
+    .rera-sub  { font-size:.58rem; color:var(--text-muted); font-family:'Josefin Sans',sans-serif; }
+
+    /* ── SERVICES ── */
+    #services {
+      padding:96px 0; position:relative; overflow:hidden;
+      background:linear-gradient(180deg,#080F22 0%,#0D1B3E 100%);
+    }
+    .section-grid-bg {
+      position:absolute; inset:0; opacity:.025; pointer-events:none;
+      background-image:linear-gradient(rgba(201,162,87,1) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,87,1) 1px,transparent 1px);
+      background-size:80px 80px;
+    }
+    .section-header { text-align:center; margin-bottom:56px; }
+    .section-h2 {
+      font-family:'Cinzel',serif; font-weight:700; color:var(--off-white);
+      font-size:clamp(1.7rem,3.2vw,2.7rem); line-height:1.2; margin-bottom:18px;
+    }
+    .section-desc {
+      color:var(--text-muted); font-size:.88rem; line-height:1.75;
+      letter-spacing:.04em; max-width:520px; margin:16px auto 0;
+    }
+    .container { max-width:1280px; margin:0 auto; padding:0 48px; }
+    @media(max-width:768px){ .container{ padding:0 24px; } }
+    .services-grid {
+      display:grid; gap:14px;
+      grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    }
+    .service-card {
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(201,162,87,.15);
+      border-radius:4px; padding:26px 22px;
+      position:relative; overflow:hidden;
+      transition:border-color .35s ease, transform .35s ease, box-shadow .35s ease;
+    }
+    .service-card::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(135deg,rgba(201,162,87,.07),transparent);
+      opacity:0; transition:opacity .35s ease; pointer-events:none;
+    }
+    .service-card:hover { border-color:rgba(201,162,87,.45); transform:translateY(-4px); box-shadow:0 16px 35px rgba(0,0,0,.3); }
+    .service-card:hover::after { opacity:1; }
+    .service-icon {
+      width:42px; height:42px; border-radius:2px; margin-bottom:14px;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(201,162,87,.08); border:1px solid rgba(201,162,87,.2);
+    }
+    .service-icon svg { color:var(--gold); }
+    .service-title { font-family:'Cinzel',serif; font-size:.82rem; color:var(--off-white); letter-spacing:.05em; margin-bottom:8px; }
+    .service-desc  { font-size:.76rem; color:var(--text-muted); line-height:1.65; }
+
+    /* ── RATES ── */
+    #rates {
+      padding:96px 0; position:relative; overflow:hidden;
+      background:linear-gradient(180deg,#0D1B3E 0%,#080F22 100%);
+    }
+    .rates-grid {
+      display:grid; gap:14px;
+      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    }
+    .rate-card {
+      background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+      border:1px solid rgba(201,162,87,.2); border-radius:4px;
+      padding:32px 22px; text-align:center; position:relative; overflow:hidden;
+      transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .rate-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      opacity:0; transition:opacity .35s ease;
+    }
+    .rate-card:hover { transform:translateY(-6px); border-color:rgba(201,162,87,.55); box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 25px rgba(201,162,87,.08); }
+    .rate-card:hover::before { opacity:1; }
+    .rate-card.featured {
+      background:linear-gradient(145deg,rgba(201,162,87,.12),rgba(201,162,87,.04));
+      border-color:rgba(201,162,87,.5);
+    }
+    .rate-card.featured::before { opacity:1; }
+    .rate-down-icon { margin:0 auto 14px; color:var(--gold); }
+    .rate-value { font-family:'Cinzel',serif; font-weight:700; font-size:clamp(1.6rem,2.5vw,2rem); margin-bottom:4px; }
+    .rate-sub { font-size:.65rem; color:var(--gold); letter-spacing:.14em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; margin-bottom:6px; }
+    .rate-label { font-size:.72rem; color:var(--text-muted); font-family:'Josefin Sans',sans-serif; }
+    .rates-disclaimer { font-size:.65rem; color:#4A5568; text-align:center; margin-top:24px; font-family:'Josefin Sans',sans-serif; letter-spacing:.04em; }
+
+    /* ── WHY CHOOSE ── */
+    #why-us {
+      padding:96px 0; position:relative; overflow:hidden;
+      background:linear-gradient(180deg,#080F22 0%,#0D1B3E 60%,#080F22 100%);
+    }
+    #why-us .section-bg-glow {
+      position:absolute; inset:0; pointer-events:none;
+      background:radial-gradient(ellipse at 50% 50%,rgba(201,162,87,.04) 0%,transparent 70%);
+    }
+    .comparison-grid {
+      display:grid; gap:20px;
+      grid-template-columns:1fr auto 1fr;
+      align-items:start;
+    }
+    @media(max-width:900px){
+      .comparison-grid { grid-template-columns:1fr; }
+      .vs-column { flex-direction:row !important; }
+    }
+    .compare-col {
+      border-radius:4px; overflow:hidden;
+    }
+    .compare-col.alf {
+      background:rgba(201,162,87,.05); border:1px solid rgba(201,162,87,.3);
+    }
+    .compare-col.bank {
+      background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.07);
+    }
+    .compare-header {
+      padding:20px 24px; text-align:center;
+    }
+    .compare-header.alf {
+      background:linear-gradient(135deg,rgba(201,162,87,.15),rgba(201,162,87,.05));
+      border-bottom:1px solid rgba(201,162,87,.25);
+    }
+    .compare-header.bank { border-bottom:1px solid rgba(255,255,255,.07); }
+    .compare-title {
+      font-family:'Cinzel',serif; font-size:.9rem; letter-spacing:.12em;
+    }
+    .compare-subtitle { font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; margin-top:4px; }
+    .compare-items { padding:24px; display:flex; flex-direction:column; gap:16px; }
+    .compare-item { display:flex; align-items:flex-start; gap:12px; }
+    .compare-item-text { font-size:.8rem; line-height:1.55; font-family:'Josefin Sans',sans-serif; }
+    .check-dot, .x-dot {
+      width:26px; height:26px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center; margin-top:1px;
+    }
+    .check-dot { border:2px solid var(--gold); color:var(--gold); }
+    .x-dot { border:2px solid rgba(255,255,255,.15); color:#4A5568; }
+    .vs-column {
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;
+      padding:24px 16px;
+    }
+    .vs-badge {
+      width:88px; height:88px; border-radius:50%; position:relative;
+      display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(145deg,#152247,#0D1B3E);
+      border:2px solid rgba(201,162,87,.4);
+      font-family:'Cinzel',serif; font-size:1.2rem; color:var(--off-white);
+    }
+    .vs-ring {
+      position:absolute; inset:-8px; border-radius:50%;
+      border:1px solid rgba(201,162,87,.15);
+      animation:pulse-ring 3s ease-out infinite;
+    }
+    .vs-stat { text-align:center; }
+    .vs-stat-n { font-size:.65rem; color:#4A5568; letter-spacing:.15em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; }
+
+    /* ── BANKS ── */
+    #banks {
+      padding:96px 0; position:relative; overflow:hidden;
+      background:linear-gradient(180deg,#0D1B3E 0%,#080F22 100%);
+    }
+    .banks-layout { display:grid; gap:48px; align-items:center; }
+    @media(min-width:900px){ .banks-layout{ grid-template-columns:1fr 1fr; gap:80px; } }
+    .banks-left {}
+    .banks-sub-stats { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px; }
+    .mini-stat-n { font-family:'Cinzel',serif; font-weight:700; font-size:1.3rem; }
+    .mini-stat-l { font-size:.65rem; color:var(--text-muted); letter-spacing:.1em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; }
+    .banks-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    @media(max-width:480px){ .banks-grid{ grid-template-columns:repeat(3,1fr); } }
+    .bank-card {
+      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
+      border-radius:8px; padding:14px 10px;
+      min-height:64px; display:flex; align-items:center; justify-content:center;
+      transition:all .28s ease;
+    }
+    .bank-card:hover { background:rgba(201,162,87,.07); border-color:rgba(201,162,87,.35); transform:scale(1.04); }
+    .bank-name { font-size:.58rem; font-family:'Josefin Sans',sans-serif; font-weight:600; color:#9BA5B4; letter-spacing:.04em; text-align:center; line-height:1.4; }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding:96px 0; position:relative; overflow:hidden;
+      background:linear-gradient(180deg,#080F22 0%,#0D1B3E 100%);
+    }
+    .contact-glow {
+      position:absolute; top:0; right:0; pointer-events:none;
+      width:320px; height:320px;
+      background:radial-gradient(circle at top right,rgba(201,162,87,.08) 0%,transparent 70%);
+    }
+    .contact-layout { display:grid; gap:56px; }
+    @media(min-width:900px){ .contact-layout{ grid-template-columns:1fr 1fr; gap:80px; } }
+    .contact-info-items { margin-top:36px; display:flex; flex-direction:column; gap:24px; }
+    .contact-info-item { display:flex; align-items:flex-start; gap:16px; }
+    .contact-icon {
+      width:40px; height:40px; border-radius:2px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(201,162,87,.08); border:1px solid rgba(201,162,87,.2);
+    }
+    .contact-icon svg { color:var(--gold); }
+    .info-cat { font-size:.62rem; color:var(--gold); letter-spacing:.2em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; margin-bottom:2px; }
+    .info-val { font-size:.84rem; color:#C8C0B0; font-family:'Josefin Sans',sans-serif; text-decoration:none; transition:color .2s; }
+    .info-val:hover { color:var(--gold-light); }
+    .contact-form-wrap {
+      padding:36px; background:rgba(255,255,255,.02);
+      border:1px solid rgba(201,162,87,.15); border-radius:4px;
+    }
+    .form-top { text-align:center; padding-bottom:20px; margin-bottom:20px; border-bottom:1px solid rgba(201,162,87,.12); }
+    .form-title { font-family:'Cinzel',serif; font-size:.95rem; color:var(--off-white); letter-spacing:.08em; }
+    .form-hint { font-size:.7rem; color:var(--text-muted); font-family:'Josefin Sans',sans-serif; margin-top:4px; }
+    .form-grid { display:grid; gap:14px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media(max-width:520px){ .form-row{ grid-template-columns:1fr; } }
+    .form-field { display:flex; flex-direction:column; }
+    textarea.input-field { resize:none; }
+    select.input-field { cursor:pointer; }
+    .submit-btn { width:100%; padding:16px; font-size:.72rem; margin-top:8px; }
+    .form-legal { font-size:.62rem; color:#4A5568; text-align:center; font-family:'Josefin Sans',sans-serif; margin-top:12px; }
+    #form-success {
+      display:none; flex-direction:column; align-items:center;
+      justify-content:center; gap:16px; text-align:center;
+      min-height:380px;
+    }
+    .success-icon {
+      width:64px; height:64px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(201,162,87,.1); border:2px solid rgba(201,162,87,.4);
+    }
+    .success-title { font-family:'Cinzel',serif; font-size:1.2rem; color:var(--off-white); }
+    .success-text { font-size:.82rem; color:var(--text-muted); line-height:1.7; max-width:280px; font-family:'Josefin Sans',sans-serif; }
+
+    /* ── FOOTER ── */
+    footer {
+      background:#040912;
+      border-top:1px solid rgba(201,162,87,.12);
+    }
+    .footer-top-line { height:2px; background:linear-gradient(90deg,transparent,rgba(201,162,87,.6),transparent); }
+    .footer-inner { max-width:1280px; margin:0 auto; padding:56px 48px 32px; }
+    @media(max-width:768px){ .footer-inner{ padding:48px 24px 28px; } }
+    .footer-grid {
+      display:grid; gap:36px;
+      grid-template-columns:1fr;
+    }
+    @media(min-width:640px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+    @media(min-width:1024px){ .footer-grid{ grid-template-columns:2fr 1fr 1fr; } }
+    .footer-brand-name { font-family:'Cinzel',serif; font-size:1.1rem; color:var(--off-white); letter-spacing:.25em; font-weight:700; }
+    .footer-brand-sub { font-size:.5rem; letter-spacing:.45em; text-transform:uppercase; color:var(--gold); margin-top:3px; }
+    .footer-brand-desc { font-size:.78rem; color:#5A6275; line-height:1.75; font-family:'Josefin Sans',sans-serif; max-width:340px; margin-top:14px; }
+    .footer-contact-list { margin-top:20px; display:flex; flex-direction:column; gap:12px; }
+    .footer-contact-item { display:flex; align-items:center; gap:10px; }
+    .footer-contact-item svg { color:var(--gold); flex-shrink:0; }
+    .footer-contact-item a, .footer-contact-item span { font-size:.76rem; color:#5A6275; font-family:'Josefin Sans',sans-serif; text-decoration:none; transition:color .2s; }
+    .footer-contact-item a:hover { color:var(--gold); }
+    .footer-col-title { font-family:'Cinzel',serif; font-size:.72rem; color:var(--gold); letter-spacing:.2em; text-transform:uppercase; margin-bottom:16px; }
+    .footer-link-list { display:flex; flex-direction:column; gap:10px; }
+    .footer-link {
+      font-size:.76rem; color:#5A6275; font-family:'Josefin Sans',sans-serif;
+      cursor:pointer; border:none; background:none; text-align:left; padding:0;
+      transition:color .2s;
+    }
+    .footer-link:hover { color:var(--gold); }
+    .rera-box {
+      margin-top:28px; display:inline-flex; flex-direction:column; align-items:center; gap:4px;
+      padding:12px 16px; border:1px solid rgba(201,162,87,.2); border-radius:4px;
+    }
+    .rera-box-cert { font-size:.56rem; color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; }
+    .rera-box-sub  { font-size:.58rem; color:#5A6275; font-family:'Josefin Sans',sans-serif; }
+    .footer-bottom {
+      margin-top:36px; padding-top:22px;
+      border-top:1px solid rgba(255,255,255,.05);
+      display:flex; flex-wrap:wrap; gap:12px;
+      justify-content:space-between; align-items:center;
+    }
+    .footer-copy { font-size:.68rem; color:#3A4255; font-family:'Josefin Sans',sans-serif; letter-spacing:.06em; }
+    .footer-legal { display:flex; gap:20px; }
+    .footer-legal button {
+      font-size:.68rem; color:#3A4255; font-family:'Josefin Sans',sans-serif;
+      cursor:pointer; border:none; background:none; transition:color .2s;
+    }
+    .footer-legal button:hover { color:var(--gold); }
+
+    @media(prefers-reduced-motion:reduce){ *,*::before,*::after{ animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" onclick="scrollTo({top:0,behavior:'smooth'});return false;" aria-label="ALF BANQ home">
+      <span class="nav-logo-main">ALF BANQ</span>
+      <span class="nav-logo-sub">── Mortgage Broker ──</span>
+    </a>
+    <div class="nav-links" role="navigation" aria-label="Main navigation">
+      <button class="nav-link" onclick="scrollTo('#services')">Services</button>
+      <button class="nav-link" onclick="scrollTo('#rates')">Rates</button>
+      <button class="nav-link" onclick="scrollTo('#why-us')">Why Us</button>
+      <button class="nav-link" onclick="scrollTo('#banks')">Banks</button>
+      <button class="nav-link" onclick="scrollTo('#contact')">Contact</button>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+971000000000" class="nav-phone">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 11.14 19.79 19.79 0 0 1 1.59 2.54 2 2 0 0 1 3.57.36h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.64 15z"/></svg>
+        +971 XX XXX XXXX
+      </a>
+      <button class="btn-gold" style="padding:11px 22px;font-size:.7rem;" onclick="scrollTo('#contact')">Free Consultation</button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" id="ham-btn">
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="icon-x" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <button class="mobile-link" onclick="scrollTo('#services');toggleMenu()">Services</button>
+    <button class="mobile-link" onclick="scrollTo('#rates');toggleMenu()">Rates</button>
+    <button class="mobile-link" onclick="scrollTo('#why-us');toggleMenu()">Why Us</button>
+    <button class="mobile-link" onclick="scrollTo('#banks');toggleMenu()">Banks</button>
+    <button class="mobile-link" onclick="scrollTo('#contact');toggleMenu()">Contact</button>
+    <button class="btn-gold" style="padding:13px 22px;font-size:.7rem;" onclick="scrollTo('#contact');toggleMenu()">Free Consultation</button>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div id="stars" aria-hidden="true"></div>
+  <div id="particles" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <!-- Burj Khalifa SVG -->
+  <div id="burj-wrap" aria-hidden="true">
+    <svg viewBox="0 0 200 600" xmlns="http://www.w3.org/2000/svg" class="burj-glow" style="width:100%;height:auto;" role="img" aria-label="Burj Khalifa silhouette">
+      <defs>
+        <linearGradient id="bvg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#E8C97A" stop-opacity="1"/>
+          <stop offset="60%" stop-color="#C9A257" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#A07C35" stop-opacity=".6"/>
+        </linearGradient>
+        <linearGradient id="bhg" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#C9A257" stop-opacity=".5"/>
+          <stop offset="50%" stop-color="#E8C97A" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#C9A257" stop-opacity=".5"/>
+        </linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Spire -->
+      <polygon points="100,2 97,78 103,78" fill="url(#bvg)" filter="url(#glow)"/>
+      <rect x="99.5" y="2" width="1" height="76" fill="#E8C97A" opacity=".5"/>
+      <!-- Tower tiers -->
+      <polygon points="97,78 103,78 105,138 95,138" fill="url(#bvg)"/>
+      <rect x="89" y="138" width="22" height="6" fill="url(#bhg)"/>
+      <polygon points="89,144 111,144 114,195 86,195" fill="url(#bvg)"/>
+      <rect x="83" y="195" width="34" height="7" fill="url(#bhg)"/>
+      <polygon points="83,202 117,202 120,258 80,258" fill="url(#bvg)"/>
+      <rect x="76" y="258" width="48" height="8" fill="url(#bhg)"/>
+      <!-- Observation deck highlight -->
+      <rect x="76" y="255" width="48" height="2" fill="#E8C97A" opacity=".7" filter="url(#glow)"/>
+      <polygon points="76,266 124,266 128,325 72,325" fill="url(#bvg)"/>
+      <rect x="68" y="325" width="64" height="9" fill="url(#bhg)"/>
+      <polygon points="68,334 132,334 137,392 63,392" fill="url(#bvg)"/>
+      <rect x="58" y="392" width="84" height="10" fill="url(#bhg)"/>
+      <polygon points="58,402 142,402 148,462 52,462" fill="url(#bvg)"/>
+      <rect x="46" y="462" width="108" height="11" fill="url(#bhg)"/>
+      <!-- Base -->
+      <polygon points="46,473 154,473 160,530 40,530" fill="url(#bvg)"/>
+      <rect x="28" y="530" width="144" height="18" fill="url(#bvg)"/>
+      <rect x="12" y="548" width="176" height="12" fill="url(#bhg)" opacity=".55"/>
+      <rect x="0" y="560" width="200" height="3" fill="url(#bhg)" opacity=".35"/>
+      <!-- Window dots -->
+      <circle cx="100" cy="96" r=".9" fill="#E8C97A" opacity=".4"/>
+      <circle cx="100" cy="164" r=".9" fill="#E8C97A" opacity=".4"/>
+      <circle cx="96" cy="164" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="104" cy="164" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="100" cy="228" r=".9" fill="#E8C97A" opacity=".4"/>
+      <circle cx="92" cy="228" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="108" cy="228" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="100" cy="296" r=".9" fill="#E8C97A" opacity=".4"/>
+      <circle cx="88" cy="296" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="112" cy="296" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="100" cy="360" r=".9" fill="#E8C97A" opacity=".4"/>
+      <circle cx="84" cy="360" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="116" cy="360" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="100" cy="428" r=".9" fill="#E8C97A" opacity=".4"/>
+      <circle cx="78" cy="428" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="122" cy="428" r=".7" fill="#E8C97A" opacity=".3"/>
+      <circle cx="100" cy="496" r=".9" fill="#E8C97A" opacity=".4"/>
+    </svg>
+  </div>
+
+  <div class="horizon-line" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-inner">
+      <!-- Label -->
+      <div class="hero-label reveal">
+        <div class="hero-label-line"></div>
+        <span class="section-label">Dubai's Premier Mortgage Broker</span>
+        <div class="hero-label-line"></div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-h1 reveal">
+        <span style="color:var(--off-white)">Your Dream Home</span><br/>
+        <span class="gold-shimmer">In The Heart of Dubai</span>
+      </h1>
+
+      <!-- Sub -->
+      <p class="hero-sub reveal">
+        Access 25+ UAE banks, negotiate exclusive rates, and secure the mortgage
+        that fits your life — all with zero broker fees and dedicated expert guidance.
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-btns reveal">
+        <button class="btn-gold" onclick="scrollTo('#contact')" aria-label="Get free mortgage consultation">Free Consultation</button>
+        <button class="btn-outline" onclick="scrollTo('#rates')" aria-label="View mortgage rates">View Live Rates</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats reveal">
+        <div class="stat-item">
+          <div class="stat-bar"></div>
+          <div class="stat-value gold-text">25+</div>
+          <div class="stat-label">UAE Bank Partners</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-bar"></div>
+          <div class="stat-value gold-text">5,000+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-bar"></div>
+          <div class="stat-value gold-text">15+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-bar"></div>
+          <div class="stat-value gold-text">AED 2B+</div>
+          <div class="stat-label">Mortgages Funded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <button class="scroll-indicator" onclick="scrollTo('#services')" aria-label="Scroll to services">
+    <span>Explore</span>
+    <div class="scroll-arrow">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    </div>
+  </button>
+
+  <!-- RERA badge -->
+  <div class="rera-badge" aria-label="RERA Certified Broker">
+    <div class="rera-stars" aria-label="5 stars">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    </div>
+    <span class="rera-cert">RERA Certified</span>
+    <span class="rera-sub">Trusted Broker</span>
+  </div>
+</section>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<section id="services">
+  <div class="section-grid-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label" style="margin-bottom:14px">What We Offer</p>
+      <h2 class="section-h2">Mortgage Solutions<br/><span class="gold-text">Tailored to You</span></h2>
+      <div class="gold-divider" style="margin:18px auto 0"></div>
+      <p class="section-desc">From first-time buyers to seasoned investors, we structure the right financing solution for every property ambition.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="service-title">Residential Mortgage</div>
+        <div class="service-desc">Bespoke home loan solutions for UAE residents and expats with competitive fixed and variable rates.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+        </div>
+        <div class="service-title">Commercial Property</div>
+        <div class="service-desc">Financing for offices, retail spaces, and mixed-use developments across the UAE.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="service-title">Plot &amp; Land Loans</div>
+        <div class="service-desc">Secure your ideal plot in Dubai's most sought-after communities with tailored land financing.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="service-title">UAE / GCC Nationals</div>
+        <div class="service-desc">Specialist mortgage products designed exclusively for UAE and GCC national buyers.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="service-title">Mega Loans</div>
+        <div class="service-desc">High-value mortgage solutions for luxury properties exceeding standard lending thresholds.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.75"/></svg>
+        </div>
+        <div class="service-title">Equity Release</div>
+        <div class="service-desc">Unlock the value in your existing property to fund new investments or personal goals.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="service-title">International Mortgages</div>
+        <div class="service-desc">Cross-border financing for international investors purchasing property in the UAE.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <div class="service-title">Balance Transfer</div>
+        <div class="service-desc">Switch your existing mortgage to a more competitive rate and reduce monthly payments.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        </div>
+        <div class="service-title">Non-Resident Mortgages</div>
+        <div class="service-desc">Dedicated financing solutions for overseas buyers investing in UAE real estate.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="service-title">Under Construction</div>
+        <div class="service-desc">Off-plan property financing with flexible payment structures aligned to developer milestones.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="service-title">Portfolio Consolidation</div>
+        <div class="service-desc">Streamline multiple property mortgages into a single, optimised financing structure.</div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </div>
+        <div class="service-title">Islamic Finance</div>
+        <div class="service-desc">Sharia-compliant Murabaha and Ijara mortgage structures from leading Islamic banks.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RATES ══════════════ -->
+<section id="rates">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label" style="margin-bottom:14px">Live Market Rates</p>
+      <h2 class="section-h2">Mortgage Solutions<br/><span class="gold-text">As Flexible As You Wish</span></h2>
+      <div class="gold-divider" style="margin:18px auto 0"></div>
+      <p class="section-desc">Our team works closely with you to understand your circumstances, then negotiates the best available rates across our network of 25+ lenders.</p>
+    </div>
+    <div class="rates-grid">
+
+      <div class="rate-card featured reveal">
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <div class="rate-value gold-shimmer">0.55%</div>
+        <div class="rate-sub">+ 3M EIBOR</div>
+        <div class="rate-label">Variable Rate</div>
+      </div>
+
+      <div class="rate-card reveal">
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <div class="rate-value gold-text">3.75%</div>
+        <div class="rate-sub">Fixed Period</div>
+        <div class="rate-label">1 Year Fixed</div>
+      </div>
+
+      <div class="rate-card reveal">
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <div class="rate-value gold-text">3.79%</div>
+        <div class="rate-sub">Fixed Period</div>
+        <div class="rate-label">2 Years Fixed</div>
+      </div>
+
+      <div class="rate-card reveal">
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <div class="rate-value gold-text">3.95%</div>
+        <div class="rate-sub">Fixed Period</div>
+        <div class="rate-label">3 Years Fixed</div>
+      </div>
+
+      <div class="rate-card reveal">
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <div class="rate-value gold-text">4.19%</div>
+        <div class="rate-sub">Fixed Period</div>
+        <div class="rate-label">5 Years Fixed</div>
+      </div>
+
+    </div>
+    <p class="rates-disclaimer">* Rates are indicative and subject to individual circumstances, property type, and lender approval. Contact us for a personalised rate assessment.</p>
+  </div>
+</section>
+
+<!-- ══════════════ WHY CHOOSE ══════════════ -->
+<section id="why-us">
+  <div class="section-bg-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label" style="margin-bottom:14px">The ALF BANQ Advantage</p>
+      <h2 class="section-h2">Why Choose<br/><span class="gold-text">ALF BANQ Mortgage?</span></h2>
+      <div class="gold-divider" style="margin:18px auto 0"></div>
+      <p class="section-desc">ALF BANQ vs Going Direct to a Bank — we have more than 5,000+ happy customers</p>
+    </div>
+    <div class="comparison-grid">
+
+      <!-- ALF BANQ -->
+      <div class="compare-col alf reveal">
+        <div class="compare-header alf">
+          <div class="compare-title gold-text">ALF BANQ</div>
+          <div class="compare-subtitle" style="color:var(--gold)">Mortgage Broker</div>
+        </div>
+        <div class="compare-items">
+          <div class="compare-item">
+            <div class="check-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="compare-item-text" style="color:#C8C0B0">Access to all lenders in the UAE</div>
+          </div>
+          <div class="compare-item">
+            <div class="check-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="compare-item-text" style="color:#C8C0B0">Consolidated view on suitable products</div>
+          </div>
+          <div class="compare-item">
+            <div class="check-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="compare-item-text" style="color:#C8C0B0">Solutions for all types of financial needs</div>
+          </div>
+          <div class="compare-item">
+            <div class="check-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="compare-item-text" style="color:#C8C0B0">Ability to negotiate special offers</div>
+          </div>
+          <div class="compare-item">
+            <div class="check-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="compare-item-text" style="color:#C8C0B0">Long-term client relationship</div>
+          </div>
+          <div class="compare-item">
+            <div class="check-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="compare-item-text" style="color:#C8C0B0">Experienced Case Management</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VS -->
+      <div class="vs-column">
+        <div class="vs-badge">
+          <div class="vs-ring" aria-hidden="true"></div>
+          VS
+        </div>
+        <div class="vs-stat">
+          <div class="vs-stat-n">5,000+</div>
+          <div class="gold-text" style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Josefin Sans',sans-serif;">Happy Clients</div>
+        </div>
+      </div>
+
+      <!-- Direct Bank -->
+      <div class="compare-col bank reveal">
+        <div class="compare-header bank">
+          <div class="compare-title" style="color:var(--text-muted)">Direct Bank</div>
+        </div>
+        <div class="compare-items">
+          <div class="compare-item">
+            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="compare-item-text" style="color:#5A6275">Limited mortgage options</div>
+          </div>
+          <div class="compare-item">
+            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="compare-item-text" style="color:#5A6275">Less flexible solutions</div>
+          </div>
+          <div class="compare-item">
+            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="compare-item-text" style="color:#5A6275">May not get the lowest rates</div>
+          </div>
+          <div class="compare-item">
+            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="compare-item-text" style="color:#5A6275">May not support all client profiles</div>
+          </div>
+          <div class="compare-item">
+            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="compare-item-text" style="color:#5A6275">Standard lending criteria only</div>
+          </div>
+          <div class="compare-item">
+            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="compare-item-text" style="color:#5A6275">Limited knowledge outside standard products</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BANKS ══════════════ -->
+<section id="banks">
+  <div class="container">
+    <div class="banks-layout">
+      <div class="banks-left reveal">
+        <p class="section-label" style="margin-bottom:14px">Our Network</p>
+        <h2 class="section-h2" style="text-align:left">We Work With All<br/><span class="gold-text">UAE Banks &amp; Financial</span><br/>Institutions</h2>
+        <div class="gold-divider" style="margin:18px 0 0"></div>
+        <p class="section-desc" style="text-align:left;margin:16px 0 0">Our clients describe us as a professional, knowledgeable team that guides them successfully through the complexities of the mortgage process — securing offers no single bank can match.</p>
+        <div class="banks-sub-stats">
+          <div><div class="mini-stat-n gold-text">25+</div><div class="mini-stat-l">Bank Partners</div></div>
+          <div><div class="mini-stat-n gold-text">100%</div><div class="mini-stat-l">Success Rate</div></div>
+          <div><div class="mini-stat-n gold-text">48hrs</div><div class="mini-stat-l">Pre-Approval</div></div>
+          <div><div class="mini-stat-n gold-text">Free</div><div class="mini-stat-l">Broker Service</div></div>
+        </div>
+      </div>
+      <div class="banks-grid reveal">
+        <div class="bank-card"><span class="bank-name">ADIB</span></div>
+        <div class="bank-card"><span class="bank-name">Ajman Bank</span></div>
+        <div class="bank-card"><span class="bank-name">Commercial Bank of Dubai</span></div>
+        <div class="bank-card"><span class="bank-name">Dubai Islamic Bank</span></div>
+        <div class="bank-card"><span class="bank-name">Emirates NBD</span></div>
+        <div class="bank-card"><span class="bank-name">HSBC</span></div>
+        <div class="bank-card"><span class="bank-name">Mashreq</span></div>
+        <div class="bank-card"><span class="bank-name">United Arab Bank</span></div>
+        <div class="bank-card"><span class="bank-name">Natl Bank of Fujairah</span></div>
+        <div class="bank-card"><span class="bank-name">RAKBANK</span></div>
+        <div class="bank-card"><span class="bank-name">Standard Chartered</span></div>
+        <div class="bank-card"><span class="bank-name">First Abu Dhabi Bank</span></div>
+        <div class="bank-card"><span class="bank-name">Emirates Islamic</span></div>
+        <div class="bank-card"><span class="bank-name">Sharjah Islamic Bank</span></div>
+        <div class="bank-card"><span class="bank-name">Arab Bank</span></div>
+        <div class="bank-card"><span class="bank-name">Bank of Baroda</span></div>
+        <div class="bank-card"><span class="bank-name">NBQ</span></div>
+        <div class="bank-card"><span class="bank-name">SNB</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Info -->
+      <div class="reveal">
+        <p class="section-label" style="margin-bottom:14px">Get In Touch</p>
+        <h2 class="section-h2" style="text-align:left">Start Your<br/><span class="gold-text">Mortgage Journey</span></h2>
+        <div class="gold-divider" style="margin:18px 0 0"></div>
+        <p class="section-desc" style="text-align:left;margin:16px 0 0">Speak to one of our expert advisors today. We offer a no-obligation consultation to assess your eligibility and find the best mortgage option for your circumstances.</p>
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 11.14 19.79 19.79 0 0 1 1.59 2.54 2 2 0 0 1 3.57.36h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.64 15z"/></svg></div>
+            <div><div class="info-cat">Call Us</div><a href="tel:+971000000000" class="info-val">+971 XX XXX XXXX</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div><div class="info-cat">WhatsApp</div><a href="https://wa.me/971000000000" class="info-val">+971 XX XXX XXXX</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="info-cat">Email</div><a href="mailto:info@alfbanq.ae" class="info-val">info@alfbanq.ae</a></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="info-cat">Office</div><span class="info-val">Dubai, United Arab Emirates</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal">
+        <div class="contact-form-wrap">
+          <div id="form-success" aria-live="polite">
+            <div class="success-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </div>
+            <div class="success-title">Message Received</div>
+            <p class="success-text">Thank you for reaching out. One of our senior mortgage advisors will be in touch within 24 hours.</p>
+            <button class="btn-outline" style="padding:12px 24px;font-size:.7rem;" onclick="resetForm()">Send Another</button>
+          </div>
+          <form id="contact-form" onsubmit="handleSubmit(event)" novalidate aria-label="Mortgage enquiry form">
+            <div class="form-top">
+              <div class="form-title">Free Consultation Request</div>
+              <div class="form-hint">No obligation — our service is completely free</div>
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name" class="input-label">Full Name *</label>
+                  <input id="name" name="name" type="text" required class="input-field" placeholder="Your full name" autocomplete="name" />
+                </div>
+                <div class="form-field">
+                  <label for="phone" class="input-label">Phone Number *</label>
+                  <input id="phone" name="phone" type="tel" required class="input-field" placeholder="+971 XX XXX XXXX" autocomplete="tel" />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="email" class="input-label">Email Address *</label>
+                <input id="email" name="email" type="email" required class="input-field" placeholder="your@email.com" autocomplete="email" />
+              </div>
+              <div class="form-field">
+                <label for="type" class="input-label">Mortgage Type</label>
+                <select id="type" name="type" class="input-field">
+                  <option value="" style="background:#0D1B3E">Select mortgage type</option>
+                  <option style="background:#0D1B3E">Residential Mortgage</option>
+                  <option style="background:#0D1B3E">Commercial Property</option>
+                  <option style="background:#0D1B3E">Plot &amp; Land Loan</option>
+                  <option style="background:#0D1B3E">Equity Release</option>
+                  <option style="background:#0D1B3E">Balance Transfer</option>
+                  <option style="background:#0D1B3E">Islamic Finance</option>
+                  <option style="background:#0D1B3E">International Mortgage</option>
+                  <option style="background:#0D1B3E">Other</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="message" class="input-label">Message</label>
+                <textarea id="message" name="message" rows="4" class="input-field" placeholder="Tell us about your property and requirements..."></textarea>
+              </div>
+              <button type="submit" class="btn-gold submit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Submit Enquiry
+              </button>
+              <p class="form-legal">By submitting you agree to our privacy policy. We never share your data.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand-name">ALF BANQ</div>
+        <div class="footer-brand-sub">── Mortgage Broker ──</div>
+        <p class="footer-brand-desc">Dubai's trusted mortgage broker. We connect you to the UAE's leading banks, negotiate the best rates, and guide you seamlessly from enquiry to keys — completely free of charge.</p>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 11.14 19.79 19.79 0 0 1 1.59 2.54 2 2 0 0 1 3.57.36h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.64 15z"/></svg>
+            <a href="tel:+971000000000">+971 XX XXX XXXX</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@alfbanq.ae">info@alfbanq.ae</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Dubai, United Arab Emirates</span>
+          </div>
+        </div>
+      </div>
+      <!-- Services -->
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-link-list">
+          <button class="footer-link" onclick="scrollTo('#services')">Residential Mortgage</button>
+          <button class="footer-link" onclick="scrollTo('#services')">Commercial Property</button>
+          <button class="footer-link" onclick="scrollTo('#services')">Plot &amp; Land Loans</button>
+          <button class="footer-link" onclick="scrollTo('#services')">Equity Release</button>
+          <button class="footer-link" onclick="scrollTo('#services')">Balance Transfer</button>
+          <button class="footer-link" onclick="scrollTo('#services')">Islamic Finance</button>
+          <button class="footer-link" onclick="scrollTo('#services')">International Mortgages</button>
+        </div>
+      </div>
+      <!-- Quick links -->
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-link-list">
+          <button class="footer-link" onclick="scrollTo('#rates')">Mortgage Rates</button>
+          <button class="footer-link" onclick="scrollTo('#why-us')">Why Choose Us</button>
+          <button class="footer-link" onclick="scrollTo('#banks')">Bank Partners</button>
+          <button class="footer-link" onclick="scrollTo('#contact')">Free Consultation</button>
+        </div>
+        <div class="rera-box">
+          <div class="rera-box-cert">RERA Certified</div>
+          <div class="rera-box-sub">Licensed Mortgage Broker</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" id="footer-year">© 2025 ALF BANQ Mortgage Broker. All rights reserved.</p>
+      <div class="footer-legal">
+        <button>Privacy Policy</button>
+        <button>Terms of Service</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── helpers ── */
+  function scrollTo(selector) {
+    const el = document.querySelector(selector);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('ham-btn');
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    document.getElementById('icon-menu').style.display = open ? 'none' : 'block';
+    document.getElementById('icon-x').style.display = open ? 'block' : 'none';
+  }
+
+  /* ── Stars ── */
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 1.5 + 0.4;
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;animation:twinkle ${2+Math.random()*3}s ease-in-out ${Math.random()*5}s infinite;`;
+    starsEl.appendChild(s);
+  }
+
+  /* ── Particles ── */
+  const particlesEl = document.getElementById('particles');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    p.style.cssText = `left:${Math.random()*100}%;bottom:0;width:${size}px;height:${size}px;animation:float-up ${6+Math.random()*8}s linear ${Math.random()*8}s infinite;`;
+    particlesEl.appendChild(p);
+  }
+
+  /* ── GSAP scroll-triggered reveals ── */
+  window.addEventListener('load', () => {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.reveal').forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1, y: 0, duration: 0.75, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+          }
+        );
+      });
+    } else {
+      // Fallback: just show everything
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  });
+
+  /* ── Contact form ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contact-form').style.display = 'none';
+    const success = document.getElementById('form-success');
+    success.style.display = 'flex';
+  }
+  function resetForm() {
+    document.getElementById('contact-form').reset();
+    document.getElementById('contact-form').style.display = '';
+    document.getElementById('form-success').style.display = 'none';
+  }
+
+  /* ── Footer year ── */
+  document.getElementById('footer-year').textContent =
+    `© ${new Date().getFullYear()} ALF BANQ Mortgage Broker. All rights reserved.`;
+</script>
+</body>
+</html>
