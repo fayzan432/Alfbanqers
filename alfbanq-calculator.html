@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ALF BANQ Mortgage Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:#0D1B3E; --navy-dark:#080F22; --navy-mid:#152247;
+    --silver:#C0C0C0; --silver-light:#E8E8E8; --silver-dark:#8A8A8A;
+    --off-white:#F5F0E8; --text-muted:#7A8699;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:linear-gradient(160deg,#050C1E 0%,#0D1B3E 45%,#080F22 100%);
+    color:var(--off-white); font-family:'Josefin Sans',sans-serif; min-height:100vh;
+  }
+  h1,h2,h3{font-family:'Cinzel',serif;}
+  .gold-text{ background:linear-gradient(135deg,#8A8A8A 0%,#E8E8E8 50%,#C0C0C0 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+  header{border-bottom:1px solid rgba(192,192,192,.15);}
+  .header-inner{max-width:1100px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-name{font-size:1.05rem;letter-spacing:.1em;font-weight:700;}
+  .brand-sub{font-size:.6rem;color:var(--silver);letter-spacing:.25em;text-transform:uppercase;}
+  .call-link{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--silver);text-decoration:none;}
+  .wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px;}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+  .tab-btn{
+    padding:10px 16px;font-size:.7rem;border-radius:4px;border:1px solid rgba(192,192,192,.4);
+    background:transparent;color:var(--silver);cursor:pointer;letter-spacing:.05em;text-transform:uppercase;
+    font-family:'Josefin Sans',sans-serif;transition:all .2s;
+  }
+  .tab-btn.active{
+    background:linear-gradient(135deg,#8A8A8A 0%,#E8E8E8 50%,#C0C0C0 100%);color:#080F22;font-weight:700;border-color:transparent;
+  }
+  .panel{display:none;}
+  .panel.active{display:block;animation:fadeIn .25s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .grid2{display:grid;gap:24px;}
+  @media(min-width:1024px){ .grid2.cols-5{grid-template-columns:2fr 3fr;} .grid2.cols-2{grid-template-columns:1fr 1fr;} }
+  .card{background:rgba(255,255,255,.03);border:1px solid rgba(192,192,192,.18);border-radius:6px;padding:20px;margin-bottom:20px;}
+  .card h3{font-size:.95rem;color:var(--off-white);margin-bottom:16px;}
+  label{display:block;font-size:.68rem;color:var(--silver);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px;}
+  .field{margin-bottom:16px;}
+  input[type=number]{
+    width:100%;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(192,192,192,.25);
+    color:var(--off-white);border-radius:2px;font-size:.85rem;font-family:'Josefin Sans',sans-serif;outline:none;
+  }
+  input[type=number]:focus{border-color:var(--silver);}
+  .checkrow{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .checkrow label{margin:0;font-size:.78rem;color:#9BA5B4;letter-spacing:0;text-transform:none;}
+  .toggle-row{display:flex;gap:8px;margin-bottom:16px;}
+  .toggle-row button{flex:1;padding:10px;font-size:.7rem;border-radius:4px;cursor:pointer;border:1px solid rgba(192,192,192,.4);background:transparent;color:var(--silver);font-family:'Josefin Sans',sans-serif;}
+  .toggle-row button.active{background:linear-gradient(135deg,#8A8A8A,#E8E8E8,#C0C0C0);color:#080F22;font-weight:700;border-color:transparent;}
+  .result-hero{text-align:center;padding:28px;}
+  .result-hero .big{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;margin:8px 0;}
+  .result-hero p{color:#7A8699;font-size:.75rem;}
+  .stat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(192,192,192,.1);font-size:.82rem;}
+  .stat-row span:first-child{color:#9BA5B4;}
+  .stat-row span:last-child{font-weight:700;font-family:'Cinzel',serif;}
+  .total-row{display:flex;justify-content:space-between;padding-top:12px;font-family:'Cinzel',serif;}
+  .bar{display:flex;height:12px;width:100%;border-radius:6px;overflow:hidden;margin-bottom:14px;}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .legend div{display:flex;align-items:center;gap:8px;font-size:.72rem;color:#9BA5B4;}
+  .swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+  table{width:100%;border-collapse:collapse;font-size:.72rem;color:#9BA5B4;}
+  th{text-align:left;padding:8px 10px;border-bottom:1px solid rgba(192,192,192,.2);}
+  td{padding:6px 10px;border-bottom:1px solid rgba(192,192,192,.06);}
+  .sched-wrap{max-height:320px;overflow:auto;}
+  .btn-outline{padding:9px 16px;font-size:.68rem;border-radius:4px;border:1px solid var(--silver);background:transparent;color:var(--silver);cursor:pointer;text-transform:uppercase;letter-spacing:.05em;}
+  .tips li{font-size:.78rem;color:#9BA5B4;line-height:1.7;margin-bottom:6px;list-style:none;}
+  .home-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+  .home-card{background:rgba(255,255,255,.03);border:1px solid rgba(192,192,192,.18);border-radius:6px;padding:20px;cursor:pointer;text-align:left;color:inherit;font-family:inherit;transition:all .25s;}
+  .home-card:hover{border-color:rgba(192,192,192,.5);transform:translateY(-3px);}
+  .home-icon{width:38px;height:38px;border-radius:4px;background:rgba(192,192,192,.08);border:1px solid rgba(192,192,192,.2);display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:1.1rem;}
+  .home-card h3{font-size:.85rem;margin-bottom:4px;}
+  .home-card p{font-size:.75rem;color:#7A8699;}
+  .pill{font-size:.6rem;color:#4A5568;margin-top:14px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 200 200">
+        <defs><linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#A07C35"/><stop offset="50%" stop-color="#E8C97A"/><stop offset="100%" stop-color="#C9A257"/>
+        </linearGradient></defs>
+        <path d="M 78 20 L 30 168 C 28 174 32 180 40 180 L 58 180 C 64 180 69 176 71 170 L 100 80 Z" fill="#0D1B3E"/>
+        <path d="M 122 20 L 170 168 C 172 174 168 180 160 180 L 142 180 C 136 180 131 176 129 170 L 100 80 Z" fill="#0D1B3E"/>
+        <rect x="92" y="92" width="8" height="8" fill="#C9A257"/><rect x="102" y="92" width="8" height="8" fill="#C9A257"/>
+        <rect x="92" y="102" width="8" height="8" fill="#C9A257"/><rect x="102" y="102" width="8" height="8" fill="#C9A257"/>
+        <path d="M 85 122 L 100 110 L 115 122 L 115 156 L 85 156 Z" fill="#C9A257"/>
+        <circle cx="100" cy="134" r="5" fill="#0D1B3E"/><rect x="97" y="138" width="6" height="10" fill="#0D1B3E"/>
+        <path d="M 175 88 C 160 110 130 140 95 156 L 95 148 C 126 134 152 108 166 88 Z" fill="url(#g)"/>
+      </svg>
+      <div>
+        <div class="brand-name">ALF BANQ</div>
+        <div class="brand-sub">Mortgage Calculator</div>
+      </div>
+    </div>
+    <a class="call-link" href="tel:+971559006272">📞 +971559006272</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div id="panels"></div>
+</div>
+
+<script>
+const fmt = n => isFinite(n) ? Math.round(n).toLocaleString('en-AE') : '—';
+
+function amortize(principal, annualRatePct, years) {
+  const r = annualRatePct/100/12;
+  const n = Math.max(1, Math.round(years*12));
+  const monthly = r === 0 ? principal/n : (principal*r*Math.pow(1+r,n)) / (Math.pow(1+r,n)-1);
+  const rows = []; let balance = principal;
+  for (let m=1;m<=n;m++){
+    const interest = balance*r;
+    const princ = monthly - interest;
+    balance = Math.max(0, balance - princ);
+    rows.push({month:m,payment:monthly,principal:princ,interest,balance});
+  }
+  const totalInterest = rows.reduce((s,x)=>s+x.interest,0);
+  return {monthly, rows, totalInterest, n};
+}
+
+const tabs = [
+  {id:'home', label:'Home'},
+  {id:'emi', label:'EMI'},
+  {id:'dbr', label:'DBR'},
+  {id:'balance', label:'Balance'},
+  {id:'transaction', label:'Transaction'},
+  {id:'roi', label:'ROI'},
+  {id:'tenor', label:'Tenor'},
+  {id:'ref', label:'Ref Data'},
+];
+
+let active = 'home';
+
+function renderTabs(){
+  const el = document.getElementById('tabs');
+  el.innerHTML = tabs.map(t => `<button class="tab-btn ${t.id===active?'active':''}" data-tab="${t.id}">${t.label}</button>`).join('');
+  el.querySelectorAll('.tab-btn').forEach(btn => btn.onclick = () => { active = btn.dataset.tab; renderTabs(); renderPanel(); });
+}
+
+function renderPanel(){
+  const el = document.getElementById('panels');
+  if (active === 'home') el.innerHTML = homePanel();
+  if (active === 'emi') { el.innerHTML = emiPanel(); wireEmi(); }
+  if (active === 'dbr') { el.innerHTML = dbrPanel(); wireDbr(); }
+  if (active === 'balance') { el.innerHTML = balancePanel(); wireBalance(); }
+  if (active === 'transaction') { el.innerHTML = transactionPanel(); wireTransaction(); }
+  if (active === 'roi') { el.innerHTML = roiPanel(); wireRoi(); }
+  if (active === 'tenor') { el.innerHTML = tenorPanel(); wireTenor(); }
+  if (active === 'ref') el.innerHTML = refPanel();
+  if (active === 'home') {
+    el.querySelectorAll('.home-card').forEach(c => c.onclick = () => { active = c.dataset.go; renderTabs(); renderPanel(); });
+  }
+}
+
+function homePanel(){
+  const items = [
+    {go:'emi', icon:'🧮', l:'EMI Calculator', d:'Full monthly payment, loan summary & amortization schedule.'},
+    {go:'dbr', icon:'🛡️', l:'DBR Calculator', d:'Check your Debt Burden Ratio against UAE policy caps.'},
+    {go:'balance', icon:'🔁', l:'Balance Transfer', d:'Compare savings from switching/buyout to a better rate.'},
+    {go:'transaction', icon:'🧾', l:'Transaction Costs', d:'DLD, agency, trustee & registration fee breakdown.'},
+    {go:'roi', icon:'📈', l:'ROI Calculator', d:'Estimate rental yield and return on investment.'},
+    {go:'tenor', icon:'📅', l:'Tenor Calculator', d:'Find the tenor needed to fit your affordable payment.'},
+    {go:'ref', icon:'🗄️', l:'Reference Data', d:'Indicative live rates across our bank network.'},
+  ];
+  return `<div class="home-grid">${items.map(i => `
+    <button class="home-card" data-go="${i.go}">
+      <div class="home-icon">${i.icon}</div>
+      <h3>${i.l}</h3>
+      <p>${i.d}</p>
+    </button>`).join('')}</div>`;
+}
+
+/* ---------- EMI ---------- */
+function emiPanel(){
+  return `
+  <div class="grid2 cols-5">
+    <div>
+      <div class="card">
+        <h3>Property Details</h3>
+        <div class="field"><label>Property Value (AED)</label><input type="number" id="e-pv" value="2000000"></div>
+        <div class="checkrow"><input type="checkbox" id="e-offplan"><label for="e-offplan">Off-Plan Property</label></div>
+        <div class="checkrow"><input type="checkbox" id="e-maxelig"><label for="e-maxelig">Use Max Eligible Loan Amount</label></div>
+        <div class="field" id="e-dp-field"><label>Down Payment %</label><input type="number" id="e-dp" value="20"></div>
+      </div>
+      <div class="card">
+        <h3>Rate &amp; Tenor</h3>
+        <div class="toggle-row">
+          <button id="e-fixed-btn" class="active">Fixed</button>
+          <button id="e-var-btn">Variable</button>
+        </div>
+        <div id="e-fixed-fields">
+          <div class="field"><label>Fixed Rate %</label><input type="number" step="0.01" id="e-fixedrate" value="3.99"></div>
+          <div class="field"><label>Fixed Period (Years)</label><input type="number" id="e-fixedyears" value="3"></div>
+        </div>
+        <div class="field"><label>Variable Rate %</label><input type="number" step="0.01" id="e-varrate" value="4.49"></div>
+        <div class="field"><label>Tenor (Years)</label><input type="number" id="e-tenor" value="25"></div>
+      </div>
+      <div class="card">
+        <h3>Policy &amp; Costs</h3>
+        <div class="field"><label>Life Insurance % (annual, on balance)</label><input type="number" step="0.1" id="e-ins" value="0.4"></div>
+        <div class="checkrow"><input type="checkbox" id="e-dld" checked><label for="e-dld">Include DLD Transfer Fee (4%)</label></div>
+      </div>
+    </div>
+    <div>
+      <div class="card result-hero">
+        <p style="color:var(--silver);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;">Estimated Monthly Payment</p>
+        <div class="big gold-text" id="e-monthly">AED 0</div>
+        <p id="e-monthly-sub"></p>
+      </div>
+      <div class="card">
+        <h3>Loan Summary</h3>
+        <div id="e-summary"></div>
+      </div>
+      <div class="card">
+        <h3>Total Cost Breakdown</h3>
+        <div id="e-breakdown"></div>
+      </div>
+      <div class="card">
+        <h3>Payment Breakdown / Visual Analytics</h3>
+        <div class="bar" id="e-bar"></div>
+        <div class="legend">
+          <div><span class="swatch" style="background:#C0C0C0"></span>Principal</div>
+          <div><span class="swatch" style="background:#8A8A8A"></span>Interest</div>
+          <div><span class="swatch" style="background:#5A6275"></span>Insurance</div>
+          <div><span class="swatch" style="background:#3A4255"></span>Fees</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h3 style="margin:0;">Amortization Schedule</h3>
+          <button class="btn-outline" id="e-sched-toggle">Show</button>
+        </div>
+        <div id="e-sched-wrap" style="display:none;">
+          <div class="sched-wrap"><table id="e-sched-table"></table></div>
+          <button class="btn-outline" id="e-sched-more" style="margin-top:10px;display:none;">Show full schedule</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Smart Tips</h3>
+        <ul class="tips">
+          <li>• Increasing your down payment by 5% can lower your monthly payment significantly.</li>
+          <li>• Locking a fixed rate protects you from EIBOR fluctuations during the fixed period.</li>
+          <li>• A shorter tenor increases monthly payments but reduces total interest paid.</li>
+          <li>• Compare 18+ bank lenders with ALF BANQ before committing to a single offer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>`;
+}
+
+function wireEmi(){
+  let rateType = 'fixed', scheduleAll = false, schedShown = false;
+  const $ = id => document.getElementById(id);
+  const fixedBtn = $('e-fixed-btn'), varBtn = $('e-var-btn');
+  fixedBtn.onclick = () => { rateType='fixed'; fixedBtn.classList.add('active'); varBtn.classList.remove('active'); $('e-fixed-fields').style.display='block'; calc(); };
+  varBtn.onclick = () => { rateType='variable'; varBtn.classList.add('active'); fixedBtn.classList.remove('active'); $('e-fixed-fields').style.display='none'; calc(); };
+  $('e-maxelig').onchange = e => { $('e-dp-field').style.display = e.target.checked ? 'none' : 'block'; calc(); };
+  ['e-pv','e-offplan','e-dp','e-fixedrate','e-fixedyears','e-varrate','e-tenor','e-ins','e-dld'].forEach(id => {
+    $(id).addEventListener('input', calc); $(id).addEventListener('change', calc);
+  });
+  $('e-sched-toggle').onclick = () => {
+    schedShown = !schedShown;
+    $('e-sched-wrap').style.display = schedShown ? 'block' : 'none';
+    $('e-sched-toggle').textContent = schedShown ? 'Hide' : 'Show';
+    if (schedShown) renderSchedule();
+  };
+  $('e-sched-more').onclick = () => { scheduleAll = true; renderSchedule(); };
+
+  let lastFullTerm = null;
+  function renderSchedule(){
+    const rows = scheduleAll ? lastFullTerm.rows : lastFullTerm.rows.slice(0,12);
+    $('e-sched-table').innerHTML = `<tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr>` +
+      rows.map(r => `<tr><td>${r.month}</td><td>${fmt(r.payment)}</td><td>${fmt(r.principal)}</td><td>${fmt(r.interest)}</td><td>${fmt(r.balance)}</td></tr>`).join('');
+    $('e-sched-more').style.display = (!scheduleAll && lastFullTerm.rows.length>12) ? 'inline-block' : 'none';
+  }
+
+  function calc(){
+    const pv = Number($('e-pv').value)||0;
+    const offplan = $('e-offplan').checked;
+    const maxelig = $('e-maxelig').checked;
+    const dpPct = Number($('e-dp').value)||0;
+    const fixedRate = Number($('e-fixedrate').value)||0;
+    const fixedYears = Number($('e-fixedyears').value)||0;
+    const varRate = Number($('e-varrate').value)||0;
+    const tenor = Number($('e-tenor').value)||0;
+    const insPct = Number($('e-ins').value)||0;
+    const includeDld = $('e-dld').checked;
+
+    const downPayment = pv*dpPct/100;
+    const maxEligible = pv*(offplan?0.5:0.8);
+    const loanAmount = maxelig ? maxEligible : Math.max(0, pv-downPayment);
+
+    const dld = pv*0.04, agency = pv*0.02, reg = 4000;
+    const transactionCosts = includeDld ? dld+agency+reg : agency+reg;
+    const insuranceCost = loanAmount*insPct/100;
+
+    const fullTerm = amortize(loanAmount, rateType==='fixed'?fixedRate:varRate, tenor);
+    let monthlyPayment = fullTerm.monthly, totalInterest = fullTerm.totalInterest;
+
+    if (rateType==='fixed' && fixedYears < tenor){
+      const fp = amortize(loanAmount, fixedRate, Math.min(fixedYears, tenor));
+      const remYears = Math.max(0, tenor-fixedYears);
+      const balanceAfterFixed = fp.rows.length ? fp.rows[fp.rows.length-1].balance : loanAmount;
+      const vp = remYears>0 ? amortize(balanceAfterFixed, varRate, remYears) : {monthly:0, totalInterest:0};
+      monthlyPayment = fp.monthly;
+      totalInterest = fp.totalInterest + vp.totalInterest;
+    }
+
+    const totalPaid = loanAmount + totalInterest + insuranceCost;
+    const grandTotal = totalPaid + transactionCosts + downPayment;
+
+    $('e-monthly').textContent = 'AED ' + fmt(monthlyPayment);
+    $('e-monthly-sub').textContent = `per month over ${tenor} years`;
+    $('e-summary').innerHTML = [
+      ['Property Value', 'AED '+fmt(pv)],
+      ['Down Payment', 'AED '+fmt(downPayment)],
+      ['Loan Amount', 'AED '+fmt(loanAmount)],
+      ['Max Eligible (LTV)', 'AED '+fmt(maxEligible)],
+      ['Total Interest', 'AED '+fmt(totalInterest)],
+      ['Total of Payments', 'AED '+fmt(totalPaid)],
+    ].map(([l,v]) => `<div class="stat-row"><span>${l}</span><span class="gold-text">${v}</span></div>`).join('');
+    $('e-breakdown').innerHTML = [
+      ['Principal', 'AED '+fmt(loanAmount)],
+      ['Interest', 'AED '+fmt(totalInterest)],
+      ['Life Insurance', 'AED '+fmt(insuranceCost)],
+      ['DLD + Agency + Registration', 'AED '+fmt(transactionCosts)],
+    ].map(([l,v]) => `<div class="stat-row"><span>${l}</span><span class="gold-text">${v}</span></div>`).join('')
+      + `<div class="total-row"><span>Grand Total</span><span class="gold-text">AED ${fmt(grandTotal)}</span></div>`;
+
+    $('e-bar').innerHTML = `
+      <div style="width:${(loanAmount/grandTotal)*100}%;background:#C0C0C0"></div>
+      <div style="width:${(totalInterest/grandTotal)*100}%;background:#8A8A8A"></div>
+      <div style="width:${(insuranceCost/grandTotal)*100}%;background:#5A6275"></div>
+      <div style="width:${(transactionCosts/grandTotal)*100}%;background:#3A4255"></div>`;
+
+    lastFullTerm = fullTerm;
+    if (schedShown) renderSchedule();
+  }
+  calc();
+}
+
+/* ---------- DBR ---------- */
+function dbrPanel(){
+  return `
+  <div class="grid2 cols-2">
+    <div class="card">
+      <h3>Debt Burden Ratio Calculator</h3>
+      <div class="field"><label>Monthly Gross Income (AED)</label><input type="number" id="d-income" value="40000"></div>
+      <div class="field"><label>Existing Monthly Liabilities (AED)</label><input type="number" id="d-liab" value="3000"></div>
+      <div class="field"><label>Proposed Mortgage EMI (AED)</label><input type="number" id="d-emi" value="8000"></div>
+    </div>
+    <div class="card result-hero">
+      <p style="color:var(--silver);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;">DBR Policy Check (UAE Central Bank cap: 50%)</p>
+      <div class="big gold-text" id="d-dbr">0%</div>
+      <p id="d-status"></p>
+    </div>
+  </div>`;
+}
+function wireDbr(){
+  const $ = id => document.getElementById(id);
+  ['d-income','d-liab','d-emi'].forEach(id => $(id).addEventListener('input', calc));
+  function calc(){
+    const income = Number($('d-income').value)||0;
+    const liab = Number($('d-liab').value)||0;
+    const emi = Number($('d-emi').value)||0;
+    const dbr = income>0 ? ((liab+emi)/income)*100 : 0;
+    const within = dbr<=50;
+    $('d-dbr').textContent = dbr.toFixed(1)+'%';
+    $('d-status').textContent = within ? 'Within DBR policy limit' : 'Exceeds DBR policy limit — restructuring recommended';
+    $('d-status').style.color = within ? '#C0C0C0' : '#E07A7A';
+  }
+  calc();
+}
+
+/* ---------- Balance Transfer ---------- */
+function balancePanel(){
+  return `
+  <div class="grid2 cols-2">
+    <div class="card">
+      <h3>Balance Transfer &amp; Buyout Calculator</h3>
+      <div class="field"><label>Outstanding Balance (AED)</label><input type="number" id="b-bal" value="1500000"></div>
+      <div class="field"><label>Current Rate %</label><input type="number" step="0.01" id="b-cur" value="4.99"></div>
+      <div class="field"><label>New Rate %</label><input type="number" step="0.01" id="b-new" value="3.79"></div>
+      <div class="field"><label>Remaining Tenor (Years)</label><input type="number" id="b-years" value="20"></div>
+    </div>
+    <div class="card"><div id="b-results"></div></div>
+  </div>`;
+}
+function wireBalance(){
+  const $ = id => document.getElementById(id);
+  ['b-bal','b-cur','b-new','b-years'].forEach(id => $(id).addEventListener('input', calc));
+  function calc(){
+    const bal = Number($('b-bal').value)||0;
+    const cur = Number($('b-cur').value)||0;
+    const nw = Number($('b-new').value)||0;
+    const years = Number($('b-years').value)||0;
+    const c = amortize(bal, cur, years);
+    const n = amortize(bal, nw, years);
+    $('b-results').innerHTML = [
+      ['Current Monthly Payment','AED '+fmt(c.monthly)],
+      ['New Monthly Payment','AED '+fmt(n.monthly)],
+      ['Monthly Savings','AED '+fmt(c.monthly-n.monthly)],
+      ['Lifetime Interest Savings','AED '+fmt(c.totalInterest-n.totalInterest)],
+    ].map(([l,v]) => `<div class="stat-row"><span>${l}</span><span class="gold-text">${v}</span></div>`).join('');
+  }
+  calc();
+}
+
+/* ---------- Transaction ---------- */
+function transactionPanel(){
+  return `
+  <div class="grid2 cols-2">
+    <div class="card">
+      <h3>Transaction Cost Calculator</h3>
+      <div class="field"><label>Property Value (AED)</label><input type="number" id="t-pv" value="2000000"></div>
+    </div>
+    <div class="card"><div id="t-results"></div></div>
+  </div>`;
+}
+function wireTransaction(){
+  const $ = id => document.getElementById(id);
+  $('t-pv').addEventListener('input', calc);
+  function calc(){
+    const pv = Number($('t-pv').value)||0;
+    const dld = pv*0.04, dldAdmin = 580, agency = pv*0.02, trustee = 4000, mortgageReg = pv*0.0025+290, valuation = 3000;
+    const total = dld+dldAdmin+agency+trustee+mortgageReg+valuation;
+    $('t-results').innerHTML = [
+      ['DLD Transfer Fee (4%)','AED '+fmt(dld)],
+      ['DLD Admin Fee','AED '+fmt(dldAdmin)],
+      ['Agency Fee (2%)','AED '+fmt(agency)],
+      ['Trustee Fee','AED '+fmt(trustee)],
+      ['Mortgage Registration','AED '+fmt(mortgageReg)],
+      ['Valuation Fee','AED '+fmt(valuation)],
+    ].map(([l,v]) => `<div class="stat-row"><span>${l}</span><span class="gold-text">${v}</span></div>`).join('')
+      + `<div class="total-row"><span>Total Transaction Cost</span><span class="gold-text">AED ${fmt(total)}</span></div>`;
+  }
+  calc();
+}
+
+/* ---------- ROI ---------- */
+function roiPanel(){
+  return `
+  <div class="grid2 cols-2">
+    <div class="card">
+      <h3>Investment ROI Calculator</h3>
+      <div class="field"><label>Property Price (AED)</label><input type="number" id="r-price" value="2000000"></div>
+      <div class="field"><label>Annual Rental Income (AED)</label><input type="number" id="r-rent" value="140000"></div>
+      <div class="field"><label>Annual Expenses / Service Charges (AED)</label><input type="number" id="r-exp" value="20000"></div>
+    </div>
+    <div class="card"><div id="r-results"></div></div>
+  </div>`;
+}
+function wireRoi(){
+  const $ = id => document.getElementById(id);
+  ['r-price','r-rent','r-exp'].forEach(id => $(id).addEventListener('input', calc));
+  function calc(){
+    const price = Number($('r-price').value)||0;
+    const rent = Number($('r-rent').value)||0;
+    const exp = Number($('r-exp').value)||0;
+    const net = rent-exp;
+    const roi = price>0 ? (net/price)*100 : 0;
+    const gross = price>0 ? (rent/price)*100 : 0;
+    $('r-results').innerHTML = [
+      ['Gross Rental Yield', gross.toFixed(2)+'%'],
+      ['Net Annual Income','AED '+fmt(net)],
+      ['Net ROI', roi.toFixed(2)+'%'],
+    ].map(([l,v]) => `<div class="stat-row"><span>${l}</span><span class="gold-text">${v}</span></div>`).join('');
+  }
+  calc();
+}
+
+/* ---------- Tenor ---------- */
+function tenorPanel(){
+  return `
+  <div class="grid2 cols-2">
+    <div class="card">
+      <h3>Required Tenor Calculator</h3>
+      <div class="field"><label>Loan Amount (AED)</label><input type="number" id="n-loan" value="1500000"></div>
+      <div class="field"><label>Interest Rate %</label><input type="number" step="0.01" id="n-rate" value="3.99"></div>
+      <div class="field"><label>Affordable Monthly Payment (AED)</label><input type="number" id="n-emi" value="8000"></div>
+    </div>
+    <div class="card result-hero">
+      <p style="color:var(--silver);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;">Required Tenor</p>
+      <div class="big gold-text" id="n-years">—</div>
+      <p id="n-note"></p>
+    </div>
+  </div>`;
+}
+function wireTenor(){
+  const $ = id => document.getElementById(id);
+  ['n-loan','n-rate','n-emi'].forEach(id => $(id).addEventListener('input', calc));
+  function calc(){
+    const loan = Number($('n-loan').value)||0;
+    const rate = Number($('n-rate').value)||0;
+    const emi = Number($('n-emi').value)||0;
+    const r = rate/100/12;
+    let years = NaN;
+    if (emi > loan*r) years = (Math.log(emi/(emi-loan*r))/Math.log(1+r))/12;
+    if (isFinite(years)){
+      $('n-years').textContent = years.toFixed(1)+' yrs';
+      $('n-note').textContent = 'Maximum UAE tenor cap is typically 25 years.';
+    } else {
+      $('n-years').textContent = 'N/A';
+      $('n-note').textContent = 'Increase affordable payment — current amount only covers interest.';
+    }
+  }
+  calc();
+}
+
+/* ---------- Ref Data ---------- */
+function refPanel(){
+  const rates = [
+    ['Emirates NBD','3.75%','0.55% + EIBOR'],
+    ['ADIB','3.79%','0.60% + EIBOR'],
+    ['Dubai Islamic Bank','3.85%','0.65% + EIBOR'],
+    ['Mashreq','3.95%','0.70% + EIBOR'],
+    ['HSBC','4.19%','0.75% + EIBOR'],
+  ];
+  return `
+  <div class="card">
+    <h3>Reference Bank Rate Data</h3>
+    <table>
+      <tr><th>Bank</th><th>Fixed Rate</th><th>Variable Rate</th></tr>
+      ${rates.map(([b,f,v]) => `<tr><td style="color:#C8C0B0">${b}</td><td>${f}</td><td>${v}</td></tr>`).join('')}
+    </table>
+    <p class="pill">Indicative rates from our network of 18+ bank lenders. Contact ALF BANQ for current live offers.</p>
+  </div>`;
+}
+
+renderTabs();
+renderPanel();
+</script>
+</body>
+</html>
