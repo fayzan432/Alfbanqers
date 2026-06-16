@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { PHONE, PHONE_TEL, WHATSAPP, EMAIL } from '@/lib/constants';
 
 const loanTypes = [
   'Residential Mortgage', 'Commercial Property', 'Plot & Land Loan',
@@ -35,7 +36,7 @@ export default function Contact() {
         style={{
           width: '300px',
           height: '300px',
-          background: 'radial-gradient(circle at top right, rgba(201,162,87,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle at top right, rgba(192,192,192,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -61,34 +62,34 @@ export default function Contact() {
             <p
               style={{ color: '#7A8699', fontSize: '0.88rem', lineHeight: 1.75, fontFamily: 'Josefin Sans', maxWidth: '400px' }}
             >
-              Speak to one of our expert advisors today. We offer a no-obligation
+              Speak to one of our portfolio Manager today. We offer a no-obligation
               consultation to assess your eligibility and find the best mortgage
-              option available for your circumstances.
+              option available as per your needs.
             </p>
 
             <div className="mt-10 flex flex-col gap-6">
               {[
-                { icon: Phone, label: 'Call Us', value: '+971 XX XXX XXXX', href: 'tel:+971000000000' },
-                { icon: MessageCircle, label: 'WhatsApp', value: '+971 XX XXX XXXX', href: 'https://wa.me/971000000000' },
-                { icon: Mail, label: 'Email', value: 'info@alfbanq.ae', href: 'mailto:info@alfbanq.ae' },
+                { icon: Phone, label: 'Call Us', value: PHONE, href: PHONE_TEL },
+                { icon: MessageCircle, label: 'WhatsApp', value: PHONE, href: WHATSAPP },
+                { icon: Mail, label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
                 { icon: MapPin, label: 'Office', value: 'Dubai, United Arab Emirates', href: undefined },
               ].map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="flex items-start gap-4">
                   <div
                     className="w-10 h-10 flex items-center justify-center rounded-sm flex-shrink-0"
-                    style={{ background: 'rgba(201,162,87,0.08)', border: '1px solid rgba(201,162,87,0.2)' }}
+                    style={{ background: 'rgba(192,192,192,0.08)', border: '1px solid rgba(192,192,192,0.2)' }}
                   >
-                    <Icon size={16} style={{ color: '#C9A257' }} aria-hidden="true" />
+                    <Icon size={16} style={{ color: '#C0C0C0' }} aria-hidden="true" />
                   </div>
                   <div>
-                    <p style={{ fontSize: '0.65rem', color: '#C9A257', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '2px' }}>
+                    <p style={{ fontSize: '0.65rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '2px' }}>
                       {label}
                     </p>
                     {href ? (
                       <a
                         href={href}
                         style={{ fontSize: '0.85rem', color: '#C8C0B0', fontFamily: 'Josefin Sans', transition: 'color 0.2s' }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = '#E8C97A')}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = '#E8E8E8')}
                         onMouseLeave={(e) => (e.currentTarget.style.color = '#C8C0B0')}
                       >
                         {value}
@@ -115,13 +116,13 @@ export default function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center justify-center h-full min-h-[420px] gap-5 rounded-sm p-8 text-center"
-                style={{ border: '1px solid rgba(201,162,87,0.3)', background: 'rgba(201,162,87,0.04)' }}
+                style={{ border: '1px solid rgba(192,192,192,0.3)', background: 'rgba(192,192,192,0.04)' }}
               >
                 <div
                   className="w-16 h-16 rounded-full flex items-center justify-center"
-                  style={{ background: 'rgba(201,162,87,0.12)', border: '2px solid rgba(201,162,87,0.4)' }}
+                  style={{ background: 'rgba(192,192,192,0.12)', border: '2px solid rgba(192,192,192,0.4)' }}
                 >
-                  <Send size={28} style={{ color: '#C9A257' }} aria-hidden="true" />
+                  <Send size={28} style={{ color: '#C0C0C0' }} aria-hidden="true" />
                 </div>
                 <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '1.3rem', color: '#F5F0E8' }}>
                   Message Received
@@ -143,11 +144,11 @@ export default function Contact() {
                 noValidate
                 aria-label="Mortgage enquiry form"
                 className="flex flex-col gap-4"
-                style={{ padding: '36px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(201,162,87,0.15)', borderRadius: '4px' }}
+                style={{ padding: '36px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(192,192,192,0.15)', borderRadius: '4px' }}
               >
                 <div
                   className="text-center mb-2"
-                  style={{ borderBottom: '1px solid rgba(201,162,87,0.12)', paddingBottom: '20px' }}
+                  style={{ borderBottom: '1px solid rgba(192,192,192,0.12)', paddingBottom: '20px' }}
                 >
                   <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '1rem', color: '#F5F0E8', letterSpacing: '0.08em' }}>
                     Free Consultation Request
@@ -161,7 +162,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="name"
-                      style={{ display: 'block', fontSize: '0.68rem', color: '#C9A257', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                      style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                     >
                       Full Name *
                     </label>
@@ -180,7 +181,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="phone"
-                      style={{ display: 'block', fontSize: '0.68rem', color: '#C9A257', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                      style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                     >
                       Phone Number *
                     </label>
@@ -201,7 +202,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="email"
-                    style={{ display: 'block', fontSize: '0.68rem', color: '#C9A257', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                    style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                   >
                     Email Address *
                   </label>
@@ -221,7 +222,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="type"
-                    style={{ display: 'block', fontSize: '0.68rem', color: '#C9A257', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                    style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                   >
                     Mortgage Type
                   </label>
@@ -243,7 +244,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    style={{ display: 'block', fontSize: '0.68rem', color: '#C9A257', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                    style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                   >
                     Message
                   </label>

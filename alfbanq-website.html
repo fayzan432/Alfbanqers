@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ALF BANQ Mortgage Broker | Dubai's Premier Mortgage Specialists</title>
-  <meta name="description" content="Dubai's leading mortgage broker. Access 25+ UAE banks, the best rates, and expert guidance." />
+  <meta name="description" content="Dubai's leading mortgage broker. Access 18+ UAE banks, the best rates, and expert guidance." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -15,9 +15,9 @@
       --navy: #0D1B3E;
       --navy-dark: #080F22;
       --navy-mid: #152247;
-      --gold: #C9A257;
-      --gold-light: #E8C97A;
-      --gold-dark: #A07C35;
+      --gold: #C0C0C0;
+      --gold-light: #E8E8E8;
+      --gold-dark: #8A8A8A;
       --off-white: #F5F0E8;
       --text-muted: #7A8699;
     }
@@ -37,7 +37,7 @@
 
     /* ── UTILITIES ── */
     .gold-text {
-      background: linear-gradient(135deg, #C9A257 0%, #E8C97A 50%, #A07C35 100%);
+      background: linear-gradient(135deg, #C0C0C0 0%, #E8E8E8 50%, #8A8A8A 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -47,7 +47,7 @@
       100% { background-position:  200% center; }
     }
     .gold-shimmer {
-      background: linear-gradient(90deg,#A07C35 0%,#E8C97A 40%,#C9A257 50%,#E8C97A 60%,#A07C35 100%);
+      background: linear-gradient(90deg,#8A8A8A 0%,#E8E8E8 40%,#C0C0C0 50%,#E8E8E8 60%,#8A8A8A 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -55,8 +55,8 @@
       animation: shimmer 4s linear infinite;
     }
     @keyframes tower-glow {
-      0%,100% { filter: drop-shadow(0 0 6px rgba(201,162,87,.25)); }
-      50%      { filter: drop-shadow(0 0 22px rgba(201,162,87,.65)); }
+      0%,100% { filter: drop-shadow(0 0 6px rgba(192,192,192,.25)); }
+      50%      { filter: drop-shadow(0 0 22px rgba(192,192,192,.65)); }
     }
     .burj-glow { animation: tower-glow 4s ease-in-out infinite; }
     @keyframes twinkle {
@@ -87,7 +87,7 @@
     }
     .btn-gold {
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      background:linear-gradient(135deg,#A07C35 0%,#E8C97A 50%,#C9A257 100%);
+      background:linear-gradient(135deg,#8A8A8A 0%,#E8E8E8 50%,#C0C0C0 100%);
       background-size:200% auto;
       color:#080F22; font-family:'Josefin Sans',sans-serif; font-weight:700;
       letter-spacing:.15em; text-transform:uppercase;
@@ -95,7 +95,7 @@
       transition:background-position .4s ease, transform .25s ease, box-shadow .3s ease;
       text-decoration:none;
     }
-    .btn-gold:hover { background-position:right center; transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,162,87,.4); }
+    .btn-gold:hover { background-position:right center; transform:translateY(-2px); box-shadow:0 8px 30px rgba(192,192,192,.4); }
     .btn-outline {
       display:inline-flex; align-items:center; justify-content:center;
       background:transparent; border:1px solid var(--gold); color:var(--gold);
@@ -104,15 +104,15 @@
       border-radius:2px; cursor:pointer;
       transition:all .3s ease; text-decoration:none;
     }
-    .btn-outline:hover { background:rgba(201,162,87,.1); transform:translateY(-1px); }
+    .btn-outline:hover { background:rgba(192,192,192,.1); transform:translateY(-1px); }
     .input-field {
-      background:rgba(255,255,255,.04); border:1px solid rgba(201,162,87,.25);
+      background:rgba(255,255,255,.04); border:1px solid rgba(192,192,192,.25);
       color:var(--off-white); font-family:'Josefin Sans',sans-serif;
       font-size:.85rem; letter-spacing:.05em; width:100%;
       padding:14px 18px; border-radius:2px; outline:none;
       transition:border-color .3s ease, background .3s ease;
     }
-    .input-field:focus { border-color:var(--gold); background:rgba(201,162,87,.05); }
+    .input-field:focus { border-color:var(--gold); background:rgba(192,192,192,.05); }
     .input-field::placeholder { color:var(--text-muted); }
     .input-label {
       display:block; font-size:.68rem; color:var(--gold);
@@ -130,7 +130,7 @@
     #navbar.scrolled {
       background:rgba(8,15,34,.96) !important;
       backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-      box-shadow:0 1px 0 rgba(201,162,87,.2);
+      box-shadow:0 1px 0 rgba(192,192,192,.2);
     }
     .nav-inner {
       max-width:1280px; margin:0 auto; padding:0 48px;
@@ -173,7 +173,7 @@
       display:none; flex-direction:column; gap:20px;
       padding:24px; background:rgba(8,15,34,.98);
       backdrop-filter:blur(20px);
-      border-top:1px solid rgba(201,162,87,.15);
+      border-top:1px solid rgba(192,192,192,.15);
     }
     #mobile-menu.open { display:flex; }
     .mobile-link {
@@ -196,12 +196,12 @@
     }
     .particle {
       position:absolute; border-radius:50%;
-      background:rgba(201,162,87,.75);
+      background:rgba(192,192,192,.75);
       animation:float-up linear infinite;
     }
     .hero-glow {
       position:absolute; right:8%; bottom:0; width:42%; max-width:420px; height:70%;
-      background:radial-gradient(ellipse at center bottom,rgba(201,162,87,.12) 0%,transparent 70%);
+      background:radial-gradient(ellipse at center bottom,rgba(192,192,192,.12) 0%,transparent 70%);
       pointer-events:none;
     }
     #burj-wrap {
@@ -210,7 +210,7 @@
     }
     .horizon-line {
       position:absolute; bottom:0; left:0; right:0; height:2px; pointer-events:none;
-      background:linear-gradient(90deg,transparent 0%,rgba(201,162,87,.3) 30%,rgba(201,162,87,.6) 60%,rgba(201,162,87,.2) 85%,transparent 100%);
+      background:linear-gradient(90deg,transparent 0%,rgba(192,192,192,.3) 30%,rgba(192,192,192,.6) 60%,rgba(192,192,192,.2) 85%,transparent 100%);
     }
     .hero-content {
       position:relative; z-index:10; max-width:1280px; margin:0 auto;
@@ -245,7 +245,7 @@
     .scroll-indicator {
       position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
       display:flex; flex-direction:column; align-items:center; gap:6px;
-      color:rgba(201,162,87,.5); cursor:pointer; z-index:10; border:none; background:none;
+      color:rgba(192,192,192,.5); cursor:pointer; z-index:10; border:none; background:none;
     }
     .scroll-indicator span { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; }
     .scroll-arrow { animation:bounce-down 1.8s ease-in-out infinite; }
@@ -253,7 +253,7 @@
       position:absolute; top:100px; right:48px; z-index:10;
       display:none; flex-direction:column; align-items:center; gap:4px;
       padding:14px 18px;
-      background:rgba(201,162,87,.07); border:1px solid rgba(201,162,87,.25);
+      background:rgba(192,192,192,.07); border:1px solid rgba(192,192,192,.25);
       border-radius:4px;
     }
     @media(min-width:640px){ .rera-badge{ display:flex; } }
@@ -268,7 +268,7 @@
     }
     .section-grid-bg {
       position:absolute; inset:0; opacity:.025; pointer-events:none;
-      background-image:linear-gradient(rgba(201,162,87,1) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,87,1) 1px,transparent 1px);
+      background-image:linear-gradient(rgba(192,192,192,1) 1px,transparent 1px),linear-gradient(90deg,rgba(192,192,192,1) 1px,transparent 1px);
       background-size:80px 80px;
     }
     .section-header { text-align:center; margin-bottom:56px; }
@@ -288,22 +288,22 @@
     }
     .service-card {
       background:rgba(255,255,255,.02);
-      border:1px solid rgba(201,162,87,.15);
+      border:1px solid rgba(192,192,192,.15);
       border-radius:4px; padding:26px 22px;
       position:relative; overflow:hidden;
       transition:border-color .35s ease, transform .35s ease, box-shadow .35s ease;
     }
     .service-card::after {
       content:''; position:absolute; inset:0;
-      background:linear-gradient(135deg,rgba(201,162,87,.07),transparent);
+      background:linear-gradient(135deg,rgba(192,192,192,.07),transparent);
       opacity:0; transition:opacity .35s ease; pointer-events:none;
     }
-    .service-card:hover { border-color:rgba(201,162,87,.45); transform:translateY(-4px); box-shadow:0 16px 35px rgba(0,0,0,.3); }
+    .service-card:hover { border-color:rgba(192,192,192,.45); transform:translateY(-4px); box-shadow:0 16px 35px rgba(0,0,0,.3); }
     .service-card:hover::after { opacity:1; }
     .service-icon {
       width:42px; height:42px; border-radius:2px; margin-bottom:14px;
       display:flex; align-items:center; justify-content:center;
-      background:rgba(201,162,87,.08); border:1px solid rgba(201,162,87,.2);
+      background:rgba(192,192,192,.08); border:1px solid rgba(192,192,192,.2);
     }
     .service-icon svg { color:var(--gold); }
     .service-title { font-family:'Cinzel',serif; font-size:.82rem; color:var(--off-white); letter-spacing:.05em; margin-bottom:8px; }
@@ -315,12 +315,12 @@
       background:linear-gradient(180deg,#0D1B3E 0%,#080F22 100%);
     }
     .rates-grid {
-      display:grid; gap:14px;
-      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+      display:flex; flex-wrap:wrap; gap:14px; justify-content:center;
     }
+    .rates-grid .rate-card { flex:1 1 180px; max-width:220px; }
     .rate-card {
       background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
-      border:1px solid rgba(201,162,87,.2); border-radius:4px;
+      border:1px solid rgba(192,192,192,.2); border-radius:4px;
       padding:32px 22px; text-align:center; position:relative; overflow:hidden;
       transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
     }
@@ -329,11 +329,11 @@
       background:linear-gradient(90deg,transparent,var(--gold),transparent);
       opacity:0; transition:opacity .35s ease;
     }
-    .rate-card:hover { transform:translateY(-6px); border-color:rgba(201,162,87,.55); box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 25px rgba(201,162,87,.08); }
+    .rate-card:hover { transform:translateY(-6px); border-color:rgba(192,192,192,.55); box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 25px rgba(192,192,192,.08); }
     .rate-card:hover::before { opacity:1; }
     .rate-card.featured {
-      background:linear-gradient(145deg,rgba(201,162,87,.12),rgba(201,162,87,.04));
-      border-color:rgba(201,162,87,.5);
+      background:linear-gradient(145deg,rgba(192,192,192,.12),rgba(192,192,192,.04));
+      border-color:rgba(192,192,192,.5);
     }
     .rate-card.featured::before { opacity:1; }
     .rate-down-icon { margin:0 auto 14px; color:var(--gold); }
@@ -349,7 +349,7 @@
     }
     #why-us .section-bg-glow {
       position:absolute; inset:0; pointer-events:none;
-      background:radial-gradient(ellipse at 50% 50%,rgba(201,162,87,.04) 0%,transparent 70%);
+      background:radial-gradient(ellipse at 50% 50%,rgba(192,192,192,.04) 0%,transparent 70%);
     }
     .comparison-grid {
       display:grid; gap:20px;
@@ -364,7 +364,7 @@
       border-radius:4px; overflow:hidden;
     }
     .compare-col.alf {
-      background:rgba(201,162,87,.05); border:1px solid rgba(201,162,87,.3);
+      background:rgba(192,192,192,.05); border:1px solid rgba(192,192,192,.3);
     }
     .compare-col.bank {
       background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.07);
@@ -373,8 +373,8 @@
       padding:20px 24px; text-align:center;
     }
     .compare-header.alf {
-      background:linear-gradient(135deg,rgba(201,162,87,.15),rgba(201,162,87,.05));
-      border-bottom:1px solid rgba(201,162,87,.25);
+      background:linear-gradient(135deg,rgba(192,192,192,.15),rgba(192,192,192,.05));
+      border-bottom:1px solid rgba(192,192,192,.25);
     }
     .compare-header.bank { border-bottom:1px solid rgba(255,255,255,.07); }
     .compare-title {
@@ -398,12 +398,12 @@
       width:88px; height:88px; border-radius:50%; position:relative;
       display:flex; align-items:center; justify-content:center;
       background:linear-gradient(145deg,#152247,#0D1B3E);
-      border:2px solid rgba(201,162,87,.4);
+      border:2px solid rgba(192,192,192,.4);
       font-family:'Cinzel',serif; font-size:1.2rem; color:var(--off-white);
     }
     .vs-ring {
       position:absolute; inset:-8px; border-radius:50%;
-      border:1px solid rgba(201,162,87,.15);
+      border:1px solid rgba(192,192,192,.15);
       animation:pulse-ring 3s ease-out infinite;
     }
     .vs-stat { text-align:center; }
@@ -428,7 +428,7 @@
       min-height:64px; display:flex; align-items:center; justify-content:center;
       transition:all .28s ease;
     }
-    .bank-card:hover { background:rgba(201,162,87,.07); border-color:rgba(201,162,87,.35); transform:scale(1.04); }
+    .bank-card:hover { background:rgba(192,192,192,.07); border-color:rgba(192,192,192,.35); transform:scale(1.04); }
     .bank-name { font-size:.58rem; font-family:'Josefin Sans',sans-serif; font-weight:600; color:#9BA5B4; letter-spacing:.04em; text-align:center; line-height:1.4; }
 
     /* ── CONTACT ── */
@@ -439,7 +439,7 @@
     .contact-glow {
       position:absolute; top:0; right:0; pointer-events:none;
       width:320px; height:320px;
-      background:radial-gradient(circle at top right,rgba(201,162,87,.08) 0%,transparent 70%);
+      background:radial-gradient(circle at top right,rgba(192,192,192,.08) 0%,transparent 70%);
     }
     .contact-layout { display:grid; gap:56px; }
     @media(min-width:900px){ .contact-layout{ grid-template-columns:1fr 1fr; gap:80px; } }
@@ -448,7 +448,7 @@
     .contact-icon {
       width:40px; height:40px; border-radius:2px; flex-shrink:0;
       display:flex; align-items:center; justify-content:center;
-      background:rgba(201,162,87,.08); border:1px solid rgba(201,162,87,.2);
+      background:rgba(192,192,192,.08); border:1px solid rgba(192,192,192,.2);
     }
     .contact-icon svg { color:var(--gold); }
     .info-cat { font-size:.62rem; color:var(--gold); letter-spacing:.2em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; margin-bottom:2px; }
@@ -456,9 +456,9 @@
     .info-val:hover { color:var(--gold-light); }
     .contact-form-wrap {
       padding:36px; background:rgba(255,255,255,.02);
-      border:1px solid rgba(201,162,87,.15); border-radius:4px;
+      border:1px solid rgba(192,192,192,.15); border-radius:4px;
     }
-    .form-top { text-align:center; padding-bottom:20px; margin-bottom:20px; border-bottom:1px solid rgba(201,162,87,.12); }
+    .form-top { text-align:center; padding-bottom:20px; margin-bottom:20px; border-bottom:1px solid rgba(192,192,192,.12); }
     .form-title { font-family:'Cinzel',serif; font-size:.95rem; color:var(--off-white); letter-spacing:.08em; }
     .form-hint { font-size:.7rem; color:var(--text-muted); font-family:'Josefin Sans',sans-serif; margin-top:4px; }
     .form-grid { display:grid; gap:14px; }
@@ -477,7 +477,7 @@
     .success-icon {
       width:64px; height:64px; border-radius:50%;
       display:flex; align-items:center; justify-content:center;
-      background:rgba(201,162,87,.1); border:2px solid rgba(201,162,87,.4);
+      background:rgba(192,192,192,.1); border:2px solid rgba(192,192,192,.4);
     }
     .success-title { font-family:'Cinzel',serif; font-size:1.2rem; color:var(--off-white); }
     .success-text { font-size:.82rem; color:var(--text-muted); line-height:1.7; max-width:280px; font-family:'Josefin Sans',sans-serif; }
@@ -485,9 +485,9 @@
     /* ── FOOTER ── */
     footer {
       background:#040912;
-      border-top:1px solid rgba(201,162,87,.12);
+      border-top:1px solid rgba(192,192,192,.12);
     }
-    .footer-top-line { height:2px; background:linear-gradient(90deg,transparent,rgba(201,162,87,.6),transparent); }
+    .footer-top-line { height:2px; background:linear-gradient(90deg,transparent,rgba(192,192,192,.6),transparent); }
     .footer-inner { max-width:1280px; margin:0 auto; padding:56px 48px 32px; }
     @media(max-width:768px){ .footer-inner{ padding:48px 24px 28px; } }
     .footer-grid {
@@ -514,7 +514,7 @@
     .footer-link:hover { color:var(--gold); }
     .rera-box {
       margin-top:28px; display:inline-flex; flex-direction:column; align-items:center; gap:4px;
-      padding:12px 16px; border:1px solid rgba(201,162,87,.2); border-radius:4px;
+      padding:12px 16px; border:1px solid rgba(192,192,192,.2); border-radius:4px;
     }
     .rera-box-cert { font-size:.56rem; color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-family:'Josefin Sans',sans-serif; }
     .rera-box-sub  { font-size:.58rem; color:#5A6275; font-family:'Josefin Sans',sans-serif; }
@@ -552,9 +552,9 @@
       <button class="nav-link" onclick="scrollTo('#contact')">Contact</button>
     </div>
     <div class="nav-cta">
-      <a href="tel:+971000000000" class="nav-phone">
+      <a href="tel:+971559006272" class="nav-phone">
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 11.14 19.79 19.79 0 0 1 1.59 2.54 2 2 0 0 1 3.57.36h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.64 15z"/></svg>
-        +971 XX XXX XXXX
+        +971559006272
       </a>
       <button class="btn-gold" style="padding:11px 22px;font-size:.7rem;" onclick="scrollTo('#contact')">Free Consultation</button>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" id="ham-btn">
@@ -584,20 +584,20 @@
     <svg viewBox="0 0 200 600" xmlns="http://www.w3.org/2000/svg" class="burj-glow" style="width:100%;height:auto;" role="img" aria-label="Burj Khalifa silhouette">
       <defs>
         <linearGradient id="bvg" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#E8C97A" stop-opacity="1"/>
-          <stop offset="60%" stop-color="#C9A257" stop-opacity=".85"/>
-          <stop offset="100%" stop-color="#A07C35" stop-opacity=".6"/>
+          <stop offset="0%" stop-color="#E8E8E8" stop-opacity="1"/>
+          <stop offset="60%" stop-color="#C0C0C0" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#8A8A8A" stop-opacity=".6"/>
         </linearGradient>
         <linearGradient id="bhg" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#C9A257" stop-opacity=".5"/>
-          <stop offset="50%" stop-color="#E8C97A" stop-opacity=".85"/>
-          <stop offset="100%" stop-color="#C9A257" stop-opacity=".5"/>
+          <stop offset="0%" stop-color="#C0C0C0" stop-opacity=".5"/>
+          <stop offset="50%" stop-color="#E8E8E8" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#C0C0C0" stop-opacity=".5"/>
         </linearGradient>
         <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
       <!-- Spire -->
       <polygon points="100,2 97,78 103,78" fill="url(#bvg)" filter="url(#glow)"/>
-      <rect x="99.5" y="2" width="1" height="76" fill="#E8C97A" opacity=".5"/>
+      <rect x="99.5" y="2" width="1" height="76" fill="#E8E8E8" opacity=".5"/>
       <!-- Tower tiers -->
       <polygon points="97,78 103,78 105,138 95,138" fill="url(#bvg)"/>
       <rect x="89" y="138" width="22" height="6" fill="url(#bhg)"/>
@@ -606,7 +606,7 @@
       <polygon points="83,202 117,202 120,258 80,258" fill="url(#bvg)"/>
       <rect x="76" y="258" width="48" height="8" fill="url(#bhg)"/>
       <!-- Observation deck highlight -->
-      <rect x="76" y="255" width="48" height="2" fill="#E8C97A" opacity=".7" filter="url(#glow)"/>
+      <rect x="76" y="255" width="48" height="2" fill="#E8E8E8" opacity=".7" filter="url(#glow)"/>
       <polygon points="76,266 124,266 128,325 72,325" fill="url(#bvg)"/>
       <rect x="68" y="325" width="64" height="9" fill="url(#bhg)"/>
       <polygon points="68,334 132,334 137,392 63,392" fill="url(#bvg)"/>
@@ -619,23 +619,23 @@
       <rect x="12" y="548" width="176" height="12" fill="url(#bhg)" opacity=".55"/>
       <rect x="0" y="560" width="200" height="3" fill="url(#bhg)" opacity=".35"/>
       <!-- Window dots -->
-      <circle cx="100" cy="96" r=".9" fill="#E8C97A" opacity=".4"/>
-      <circle cx="100" cy="164" r=".9" fill="#E8C97A" opacity=".4"/>
-      <circle cx="96" cy="164" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="104" cy="164" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="100" cy="228" r=".9" fill="#E8C97A" opacity=".4"/>
-      <circle cx="92" cy="228" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="108" cy="228" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="100" cy="296" r=".9" fill="#E8C97A" opacity=".4"/>
-      <circle cx="88" cy="296" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="112" cy="296" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="100" cy="360" r=".9" fill="#E8C97A" opacity=".4"/>
-      <circle cx="84" cy="360" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="116" cy="360" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="100" cy="428" r=".9" fill="#E8C97A" opacity=".4"/>
-      <circle cx="78" cy="428" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="122" cy="428" r=".7" fill="#E8C97A" opacity=".3"/>
-      <circle cx="100" cy="496" r=".9" fill="#E8C97A" opacity=".4"/>
+      <circle cx="100" cy="96" r=".9" fill="#E8E8E8" opacity=".4"/>
+      <circle cx="100" cy="164" r=".9" fill="#E8E8E8" opacity=".4"/>
+      <circle cx="96" cy="164" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="104" cy="164" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="100" cy="228" r=".9" fill="#E8E8E8" opacity=".4"/>
+      <circle cx="92" cy="228" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="108" cy="228" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="100" cy="296" r=".9" fill="#E8E8E8" opacity=".4"/>
+      <circle cx="88" cy="296" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="112" cy="296" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="100" cy="360" r=".9" fill="#E8E8E8" opacity=".4"/>
+      <circle cx="84" cy="360" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="116" cy="360" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="100" cy="428" r=".9" fill="#E8E8E8" opacity=".4"/>
+      <circle cx="78" cy="428" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="122" cy="428" r=".7" fill="#E8E8E8" opacity=".3"/>
+      <circle cx="100" cy="496" r=".9" fill="#E8E8E8" opacity=".4"/>
     </svg>
   </div>
 
@@ -646,20 +646,20 @@
       <!-- Label -->
       <div class="hero-label reveal">
         <div class="hero-label-line"></div>
-        <span class="section-label">Dubai's Premier Mortgage Broker</span>
+        <span class="section-label">UAE's Premier Mortgage Broker</span>
         <div class="hero-label-line"></div>
       </div>
 
       <!-- Headline -->
       <h1 class="hero-h1 reveal">
         <span style="color:var(--off-white)">Your Dream Home</span><br/>
-        <span class="gold-shimmer">In The Heart of Dubai</span>
+        <span class="gold-shimmer">In The Heart of UAE</span>
       </h1>
 
       <!-- Sub -->
       <p class="hero-sub reveal">
-        Access 25+ UAE banks, negotiate exclusive rates, and secure the mortgage
-        that fits your life — all with zero broker fees and dedicated expert guidance.
+        Access 18+ UAE banks, negotiate exclusive rates, and secure the mortgage
+        that fits your requirements — all with zero broker fees and dedicated expert guidance.
       </p>
 
       <!-- CTAs -->
@@ -672,17 +672,17 @@
       <div class="hero-stats reveal">
         <div class="stat-item">
           <div class="stat-bar"></div>
-          <div class="stat-value gold-text">25+</div>
+          <div class="stat-value gold-text">18+</div>
           <div class="stat-label">UAE Bank Partners</div>
         </div>
         <div class="stat-item">
           <div class="stat-bar"></div>
-          <div class="stat-value gold-text">5,000+</div>
+          <div class="stat-value gold-text">3,500+</div>
           <div class="stat-label">Happy Clients</div>
         </div>
         <div class="stat-item">
           <div class="stat-bar"></div>
-          <div class="stat-value gold-text">15+</div>
+          <div class="stat-value gold-text">16+</div>
           <div class="stat-label">Years Experience</div>
         </div>
         <div class="stat-item">
@@ -702,18 +702,6 @@
     </div>
   </button>
 
-  <!-- RERA badge -->
-  <div class="rera-badge" aria-label="RERA Certified Broker">
-    <div class="rera-stars" aria-label="5 stars">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A257" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    </div>
-    <span class="rera-cert">RERA Certified</span>
-    <span class="rera-sub">Trusted Broker</span>
-  </div>
 </section>
 
 <!-- ══════════════ SERVICES ══════════════ -->
@@ -722,7 +710,7 @@
   <div class="container">
     <div class="section-header reveal">
       <p class="section-label" style="margin-bottom:14px">What We Offer</p>
-      <h2 class="section-h2">Mortgage Solutions<br/><span class="gold-text">Tailored to You</span></h2>
+      <h2 class="section-h2">Mortgage Solutions<br/><span class="gold-text">Tailored to your needs</span></h2>
       <div class="gold-divider" style="margin:18px auto 0"></div>
       <p class="section-desc">From first-time buyers to seasoned investors, we structure the right financing solution for every property ambition.</p>
     </div>
@@ -730,7 +718,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <div class="service-title">Residential Mortgage</div>
         <div class="service-desc">Bespoke home loan solutions for UAE residents and expats with competitive fixed and variable rates.</div>
@@ -738,7 +726,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
         </div>
         <div class="service-title">Commercial Property</div>
         <div class="service-desc">Financing for offices, retail spaces, and mixed-use developments across the UAE.</div>
@@ -746,15 +734,15 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="service-title">Plot &amp; Land Loans</div>
-        <div class="service-desc">Secure your ideal plot in Dubai's most sought-after communities with tailored land financing.</div>
+        <div class="service-desc">Secure your ideal plot in Dubai's most sought-after communities with tailored land and Construction Finance financing.</div>
       </div>
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <div class="service-title">UAE / GCC Nationals</div>
         <div class="service-desc">Specialist mortgage products designed exclusively for UAE and GCC national buyers.</div>
@@ -762,7 +750,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
         <div class="service-title">Mega Loans</div>
         <div class="service-desc">High-value mortgage solutions for luxury properties exceeding standard lending thresholds.</div>
@@ -770,7 +758,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.75"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.75"/></svg>
         </div>
         <div class="service-title">Equity Release</div>
         <div class="service-desc">Unlock the value in your existing property to fund new investments or personal goals.</div>
@@ -778,15 +766,15 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
-        <div class="service-title">International Mortgages</div>
+        <div class="service-title">Core and Shell Financing</div>
         <div class="service-desc">Cross-border financing for international investors purchasing property in the UAE.</div>
       </div>
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
         </div>
         <div class="service-title">Balance Transfer</div>
         <div class="service-desc">Switch your existing mortgage to a more competitive rate and reduce monthly payments.</div>
@@ -794,7 +782,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
         </div>
         <div class="service-title">Non-Resident Mortgages</div>
         <div class="service-desc">Dedicated financing solutions for overseas buyers investing in UAE real estate.</div>
@@ -802,7 +790,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <div class="service-title">Under Construction</div>
         <div class="service-desc">Off-plan property financing with flexible payment structures aligned to developer milestones.</div>
@@ -810,7 +798,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <div class="service-title">Portfolio Consolidation</div>
         <div class="service-desc">Streamline multiple property mortgages into a single, optimised financing structure.</div>
@@ -818,7 +806,7 @@
 
       <div class="service-card reveal">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </div>
         <div class="service-title">Islamic Finance</div>
         <div class="service-desc">Sharia-compliant Murabaha and Ijara mortgage structures from leading Islamic banks.</div>
@@ -835,40 +823,40 @@
       <p class="section-label" style="margin-bottom:14px">Live Market Rates</p>
       <h2 class="section-h2">Mortgage Solutions<br/><span class="gold-text">As Flexible As You Wish</span></h2>
       <div class="gold-divider" style="margin:18px auto 0"></div>
-      <p class="section-desc">Our team works closely with you to understand your circumstances, then negotiates the best available rates across our network of 25+ lenders.</p>
+      <p class="section-desc">Our team works closely with you to understand your requirements, then negotiates the best available rates across our network of 18+ lenders.</p>
     </div>
     <div class="rates-grid">
 
       <div class="rate-card featured reveal">
-        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
         <div class="rate-value gold-shimmer">0.55%</div>
         <div class="rate-sub">+ 3M EIBOR</div>
         <div class="rate-label">Variable Rate</div>
       </div>
 
       <div class="rate-card reveal">
-        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
         <div class="rate-value gold-text">3.75%</div>
         <div class="rate-sub">Fixed Period</div>
         <div class="rate-label">1 Year Fixed</div>
       </div>
 
       <div class="rate-card reveal">
-        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
         <div class="rate-value gold-text">3.79%</div>
         <div class="rate-sub">Fixed Period</div>
         <div class="rate-label">2 Years Fixed</div>
       </div>
 
       <div class="rate-card reveal">
-        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
         <div class="rate-value gold-text">3.95%</div>
         <div class="rate-sub">Fixed Period</div>
         <div class="rate-label">3 Years Fixed</div>
       </div>
 
       <div class="rate-card reveal">
-        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+        <svg class="rate-down-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
         <div class="rate-value gold-text">4.19%</div>
         <div class="rate-sub">Fixed Period</div>
         <div class="rate-label">5 Years Fixed</div>
@@ -887,7 +875,7 @@
       <p class="section-label" style="margin-bottom:14px">The ALF BANQ Advantage</p>
       <h2 class="section-h2">Why Choose<br/><span class="gold-text">ALF BANQ Mortgage?</span></h2>
       <div class="gold-divider" style="margin:18px auto 0"></div>
-      <p class="section-desc">ALF BANQ vs Going Direct to a Bank — we have more than 5,000+ happy customers</p>
+      <p class="section-desc">We have more than 3,500+ happy customers</p>
     </div>
     <div class="comparison-grid">
 
@@ -925,51 +913,6 @@
         </div>
       </div>
 
-      <!-- VS -->
-      <div class="vs-column">
-        <div class="vs-badge">
-          <div class="vs-ring" aria-hidden="true"></div>
-          VS
-        </div>
-        <div class="vs-stat">
-          <div class="vs-stat-n">5,000+</div>
-          <div class="gold-text" style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Josefin Sans',sans-serif;">Happy Clients</div>
-        </div>
-      </div>
-
-      <!-- Direct Bank -->
-      <div class="compare-col bank reveal">
-        <div class="compare-header bank">
-          <div class="compare-title" style="color:var(--text-muted)">Direct Bank</div>
-        </div>
-        <div class="compare-items">
-          <div class="compare-item">
-            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <div class="compare-item-text" style="color:#5A6275">Limited mortgage options</div>
-          </div>
-          <div class="compare-item">
-            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <div class="compare-item-text" style="color:#5A6275">Less flexible solutions</div>
-          </div>
-          <div class="compare-item">
-            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <div class="compare-item-text" style="color:#5A6275">May not get the lowest rates</div>
-          </div>
-          <div class="compare-item">
-            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <div class="compare-item-text" style="color:#5A6275">May not support all client profiles</div>
-          </div>
-          <div class="compare-item">
-            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <div class="compare-item-text" style="color:#5A6275">Standard lending criteria only</div>
-          </div>
-          <div class="compare-item">
-            <div class="x-dot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <div class="compare-item-text" style="color:#5A6275">Limited knowledge outside standard products</div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -984,9 +927,9 @@
         <div class="gold-divider" style="margin:18px 0 0"></div>
         <p class="section-desc" style="text-align:left;margin:16px 0 0">Our clients describe us as a professional, knowledgeable team that guides them successfully through the complexities of the mortgage process — securing offers no single bank can match.</p>
         <div class="banks-sub-stats">
-          <div><div class="mini-stat-n gold-text">25+</div><div class="mini-stat-l">Bank Partners</div></div>
-          <div><div class="mini-stat-n gold-text">100%</div><div class="mini-stat-l">Success Rate</div></div>
-          <div><div class="mini-stat-n gold-text">48hrs</div><div class="mini-stat-l">Pre-Approval</div></div>
+          <div><div class="mini-stat-n gold-text">18+</div><div class="mini-stat-l">Bank Partners</div></div>
+          <div><div class="mini-stat-n gold-text">Excellent</div><div class="mini-stat-l">Success Rate</div></div>
+          <div><div class="mini-stat-n gold-text">48 Hours</div><div class="mini-stat-l">Fast Pre Approval</div></div>
           <div><div class="mini-stat-n gold-text">Free</div><div class="mini-stat-l">Broker Service</div></div>
         </div>
       </div>
@@ -1024,19 +967,19 @@
         <p class="section-label" style="margin-bottom:14px">Get In Touch</p>
         <h2 class="section-h2" style="text-align:left">Start Your<br/><span class="gold-text">Mortgage Journey</span></h2>
         <div class="gold-divider" style="margin:18px 0 0"></div>
-        <p class="section-desc" style="text-align:left;margin:16px 0 0">Speak to one of our expert advisors today. We offer a no-obligation consultation to assess your eligibility and find the best mortgage option for your circumstances.</p>
+        <p class="section-desc" style="text-align:left;margin:16px 0 0">Speak to one of our portfolio Manager today. We offer a no-obligation consultation to assess your eligibility and find the best mortgage option as per your needs.</p>
         <div class="contact-info-items">
           <div class="contact-info-item">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 11.14 19.79 19.79 0 0 1 1.59 2.54 2 2 0 0 1 3.57.36h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.64 15z"/></svg></div>
-            <div><div class="info-cat">Call Us</div><a href="tel:+971000000000" class="info-val">+971 XX XXX XXXX</a></div>
+            <div><div class="info-cat">Call Us</div><a href="tel:+971559006272" class="info-val">+971559006272</a></div>
           </div>
           <div class="contact-info-item">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            <div><div class="info-cat">WhatsApp</div><a href="https://wa.me/971000000000" class="info-val">+971 XX XXX XXXX</a></div>
+            <div><div class="info-cat">WhatsApp</div><a href="https://wa.me/971559006272" class="info-val">+971559006272</a></div>
           </div>
           <div class="contact-info-item">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="info-cat">Email</div><a href="mailto:info@alfbanq.ae" class="info-val">info@alfbanq.ae</a></div>
+            <div><div class="info-cat">Email</div><a href="mailto:shabbir.malik@alfbanqers.com" class="info-val">shabbir.malik@alfbanqers.com</a></div>
           </div>
           <div class="contact-info-item">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -1050,7 +993,7 @@
         <div class="contact-form-wrap">
           <div id="form-success" aria-live="polite">
             <div class="success-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </div>
             <div class="success-title">Message Received</div>
             <p class="success-text">Thank you for reaching out. One of our senior mortgage advisors will be in touch within 24 hours.</p>
@@ -1069,7 +1012,7 @@
                 </div>
                 <div class="form-field">
                   <label for="phone" class="input-label">Phone Number *</label>
-                  <input id="phone" name="phone" type="tel" required class="input-field" placeholder="+971 XX XXX XXXX" autocomplete="tel" />
+                  <input id="phone" name="phone" type="tel" required class="input-field" placeholder="+971559006272" autocomplete="tel" />
                 </div>
               </div>
               <div class="form-field">
@@ -1120,11 +1063,11 @@
         <div class="footer-contact-list">
           <div class="footer-contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 11.14 19.79 19.79 0 0 1 1.59 2.54 2 2 0 0 1 3.57.36h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.64 15z"/></svg>
-            <a href="tel:+971000000000">+971 XX XXX XXXX</a>
+            <a href="tel:+971559006272">+971559006272</a>
           </div>
           <div class="footer-contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@alfbanq.ae">info@alfbanq.ae</a>
+            <a href="mailto:shabbir.malik@alfbanqers.com">shabbir.malik@alfbanqers.com</a>
           </div>
           <div class="footer-contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1142,7 +1085,7 @@
           <button class="footer-link" onclick="scrollTo('#services')">Equity Release</button>
           <button class="footer-link" onclick="scrollTo('#services')">Balance Transfer</button>
           <button class="footer-link" onclick="scrollTo('#services')">Islamic Finance</button>
-          <button class="footer-link" onclick="scrollTo('#services')">International Mortgages</button>
+          <button class="footer-link" onclick="scrollTo('#services')">Core and Shell Financing</button>
         </div>
       </div>
       <!-- Quick links -->

@@ -29,7 +29,7 @@ export default function Rates() {
           width: '700px',
           height: '300px',
           borderRadius: '50%',
-          border: '1px solid rgba(201,162,87,0.07)',
+          border: '1px solid rgba(192,192,192,0.07)',
         }}
       />
 
@@ -57,12 +57,12 @@ export default function Rates() {
             style={{ color: '#7A8699', fontSize: '0.88rem', letterSpacing: '0.04em', fontFamily: 'Josefin Sans' }}
           >
             Our team works closely with you to understand your circumstances, then
-            negotiates the best available rates across our network of 25+ lenders.
+            negotiates the best available rates across our network of 18+ lenders.
           </p>
         </motion.div>
 
         {/* Rate cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           {rates.map((r, i) => (
             <motion.div
               key={r.label}
@@ -70,10 +70,10 @@ export default function Rates() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-              className="rate-card"
+              className="rate-card w-full sm:w-[45%] lg:w-[18%]"
               style={r.featured ? {
-                background: 'linear-gradient(145deg, rgba(201,162,87,0.12), rgba(201,162,87,0.04))',
-                borderColor: 'rgba(201,162,87,0.5)',
+                background: 'linear-gradient(145deg, rgba(192,192,192,0.12), rgba(192,192,192,0.04))',
+                borderColor: 'rgba(192,192,192,0.5)',
               } : {}}
             >
               {r.featured && (
@@ -84,7 +84,7 @@ export default function Rates() {
               )}
               <TrendingDown
                 size={20}
-                style={{ color: '#C9A257', margin: '0 auto 12px', opacity: r.featured ? 1 : 0.5 }}
+                style={{ color: '#C0C0C0', margin: '0 auto 12px', opacity: r.featured ? 1 : 0.5 }}
                 aria-hidden="true"
               />
               <div
@@ -94,7 +94,7 @@ export default function Rates() {
                 {r.rate}
               </div>
               <div
-                style={{ fontSize: '0.68rem', color: '#C9A257', letterSpacing: '0.12em', fontFamily: 'Josefin Sans', textTransform: 'uppercase', marginBottom: '6px' }}
+                style={{ fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.12em', fontFamily: 'Josefin Sans', textTransform: 'uppercase', marginBottom: '6px' }}
               >
                 {r.sub}
               </div>

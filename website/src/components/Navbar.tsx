@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
+import AlfBanqMark from './AlfBanqMark';
+import { PHONE, PHONE_TEL } from '@/lib/constants';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Rates', href: '#rates' },
   { label: 'Why Us', href: '#why-us' },
   { label: 'Banks', href: '#banks' },
+  { label: 'Calculator', href: '/calculator' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -23,6 +26,10 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
+    if (href.startsWith('/')) {
+      window.open(href, '_blank');
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
@@ -34,7 +41,7 @@ export default function Navbar() {
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <a
             href="#"
@@ -42,31 +49,32 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             aria-label="ALF BANQ Mortgage Broker home"
           >
-            <div className="flex flex-col leading-none">
+            <AlfBanqMark size={46} />
+            <div className="flex flex-col items-start leading-none">
               <span
-                className="font-bold tracking-[0.25em] text-lg"
-                style={{ fontFamily: 'Cinzel, serif', color: '#F5F0E8' }}
+                className="font-bold tracking-[0.2em]"
+                style={{ fontFamily: 'Cinzel, serif', color: '#F5F0E8', fontSize: '1.45rem' }}
               >
                 ALF BANQ
               </span>
               <span
-                className="text-[0.52rem] tracking-[0.45em] uppercase"
-                style={{ color: '#C9A257' }}
+                className="uppercase whitespace-nowrap"
+                style={{ color: '#C0C0C0', fontSize: '0.56rem', letterSpacing: '0.32em', marginTop: '4px' }}
               >
-                ── Mortgage Broker ──
+                Mortgage Broker
               </span>
             </div>
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
                 className="text-xs tracking-[0.2em] uppercase transition-colors duration-200 cursor-pointer"
                 style={{ color: '#9BA5B4', fontFamily: 'Josefin Sans, sans-serif', fontWeight: 500 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#C9A257')}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#C0C0C0')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = '#9BA5B4')}
               >
                 {link.label}
@@ -77,12 +85,12 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:+971000000000"
+              href={PHONE_TEL}
               className="flex items-center gap-2 text-xs tracking-wider uppercase transition-colors duration-200"
-              style={{ color: '#C9A257' }}
+              style={{ color: '#C0C0C0' }}
             >
               <Phone size={14} />
-              <span style={{ fontFamily: 'Josefin Sans, sans-serif', fontWeight: 600 }}>+971 XX XXX XXXX</span>
+              <span style={{ fontFamily: 'Josefin Sans, sans-serif', fontWeight: 600 }}>{PHONE}</span>
             </a>
             <button
               onClick={() => handleNavClick('#contact')}
@@ -95,7 +103,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             className="lg:hidden p-2 rounded-sm transition-colors duration-200"
-            style={{ color: '#C9A257' }}
+            style={{ color: '#C0C0C0' }}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
@@ -109,12 +117,12 @@ export default function Navbar() {
       <div
         className="lg:hidden overflow-hidden transition-all duration-400"
         style={{
-          maxHeight: menuOpen ? '400px' : '0',
+          maxHeight: menuOpen ? '460px' : '0',
           background: 'rgba(8, 15, 34, 0.98)',
           backdropFilter: 'blur(20px)',
         }}
       >
-        <div className="px-6 py-6 flex flex-col gap-5 border-t border-gold" style={{ borderColor: 'rgba(201,162,87,0.2)' }}>
+        <div className="px-6 py-6 flex flex-col gap-5" style={{ borderTop: '1px solid rgba(192,192,192,0.2)' }}>
           {navLinks.map((link) => (
             <button
               key={link.href}

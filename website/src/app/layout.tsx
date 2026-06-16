@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ALF BANQ Mortgage Broker | Dubai's Premier Mortgage Specialists",
-  description: "Dubai's leading mortgage broker. Access 25+ UAE banks, the best rates, and expert guidance for residential, commercial, and investment properties.",
+  title: "ALF BANQ Mortgage Broker | UAE's Premier Mortgage Specialists",
+  description: "UAE's leading mortgage broker. Access 18+ UAE banks, the best rates, and expert guidance for residential, commercial, and investment properties.",
   keywords: "mortgage broker Dubai, home loan UAE, mortgage Dubai, property finance UAE",
 };
 

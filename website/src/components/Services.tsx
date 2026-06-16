@@ -2,17 +2,17 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Home, Building2, MapPin, Users, TrendingUp, RotateCcw, Globe, RefreshCw, UserX, Hammer, BarChart3, Moon } from 'lucide-react';
+import { Home, Building2, MapPin, Users, TrendingUp, RotateCcw, Layers, RefreshCw, UserX, Hammer, BarChart3, Moon } from 'lucide-react';
 
 const services = [
   { icon: Home, title: 'Residential Mortgage', desc: 'Bespoke home loan solutions for UAE residents and expats with competitive fixed and variable rates.' },
-  { icon: Building2, title: 'Commercial Property', desc: 'Financing for offices, retail spaces, and mixed-use developments across the UAE.' },
-  { icon: MapPin, title: 'Plot & Land Loans', desc: 'Secure your ideal plot in Dubai\'s most sought-after communities with tailored land financing.' },
-  { icon: Users, title: 'UAE / GCC Nationals', desc: 'Specialist mortgage products designed exclusively for UAE and GCC national buyers.' },
+  { icon: Building2, title: 'Commercial Property', desc: 'Financing for offices, retail, warehouse, and mixed-use developments across the UAE.' },
+  { icon: MapPin, title: 'Plot & Land Loans / Construction Finance', desc: 'Secure your ideal plot in Dubai\'s most sought-after communities with tailored land and Construction Finance financing.' },
+  { icon: Users, title: 'UAE / GCC Nationals', desc: 'Specialized mortgage products designed exclusively for UAE and GCC national buyers.' },
   { icon: TrendingUp, title: 'Mega Loans', desc: 'High-value mortgage solutions for luxury properties exceeding standard lending thresholds.' },
   { icon: RotateCcw, title: 'Equity Release', desc: 'Unlock the value in your existing property to fund new investments or personal goals.' },
-  { icon: Globe, title: 'International Mortgages', desc: 'Cross-border financing for international investors purchasing property in the UAE.' },
-  { icon: RefreshCw, title: 'Balance Transfer', desc: 'Switch your existing mortgage to a more competitive rate and reduce your monthly payments.' },
+  { icon: Layers, title: 'Core and Shell Financing', desc: 'Specialized financing for Grey Structure and core and shell property developments across the UAE.' },
+  { icon: RefreshCw, title: 'Balance Transfer', desc: 'Switch and Buyout your existing mortgage to a more competitive rate and reduce your monthly payments.' },
   { icon: UserX, title: 'Non-Resident Mortgages', desc: 'Dedicated financing solutions for overseas buyers investing in UAE real estate.' },
   { icon: Hammer, title: 'Under Construction', desc: 'Off-plan property financing with flexible payment structures aligned to developer milestones.' },
   { icon: BarChart3, title: 'Portfolio Consolidation', desc: 'Streamline multiple property mortgages into a single, optimised financing structure.' },
@@ -46,7 +46,7 @@ export default function Services() {
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         aria-hidden="true"
         style={{
-          backgroundImage: 'linear-gradient(rgba(201,162,87,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,162,87,1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(192,192,192,1) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,1) 1px, transparent 1px)',
           backgroundSize: '80px 80px',
         }}
       />
@@ -67,7 +67,7 @@ export default function Services() {
           >
             Mortgage Solutions
             <br />
-            <span className="gold-text">Tailored to You</span>
+            <span className="gold-text">Tailored to your needs</span>
           </h2>
           <div className="gold-divider mb-5" />
           <p
@@ -93,12 +93,12 @@ export default function Services() {
               <motion.div key={svc.title} variants={cardVariants} className="service-card group cursor-default">
                 <div
                   className="mb-4 w-11 h-11 flex items-center justify-center rounded-sm transition-colors duration-300"
-                  style={{ background: 'rgba(201,162,87,0.08)', border: '1px solid rgba(201,162,87,0.2)' }}
+                  style={{ background: 'rgba(192,192,192,0.08)', border: '1px solid rgba(192,192,192,0.2)' }}
                 >
                   <Icon
                     size={20}
                     className="transition-colors duration-300"
-                    style={{ color: '#C9A257' }}
+                    style={{ color: '#C0C0C0' }}
                     aria-hidden="true"
                   />
                 </div>

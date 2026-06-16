@@ -48,9 +48,9 @@ export default function Banks() {
 
             <div className="mt-8 grid grid-cols-2 gap-4">
               {[
-                { n: '25+', l: 'Bank Partners' },
-                { n: '100%', l: 'Success Rate' },
-                { n: '48hrs', l: 'Pre-Approval' },
+                { n: '18+', l: 'Bank Lenders' },
+                { n: 'Excellent', l: 'Success Rate' },
+                { n: '48 Hours', l: 'Fast Pre Approval' },
                 { n: 'Free', l: 'Broker Service' },
               ].map((s) => (
                 <div key={s.l} className="flex flex-col gap-1">

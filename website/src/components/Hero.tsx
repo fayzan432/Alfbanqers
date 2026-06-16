@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Star } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import BurjKhalifaSVG from './BurjKhalifaSVG';
 
 const stats = [
-  { value: '25+', label: 'UAE Bank Partners' },
-  { value: '5,000+', label: 'Happy Clients' },
-  { value: '15+', label: 'Years Experience' },
+  { value: '18+', label: 'UAE Bank Partners' },
+  { value: '3,500+', label: 'Happy Clients' },
+  { value: '16+', label: 'Years Experience' },
   { value: 'AED 2B+', label: 'Mortgages Funded' },
 ];
 
@@ -70,7 +70,7 @@ function GoldParticles() {
             bottom: '0',
             width: `${p.size}px`,
             height: `${p.size}px`,
-            background: 'rgba(201,162,87,0.7)',
+            background: 'rgba(192,192,192,0.7)',
             animation: `float-up ${p.duration}s linear ${p.delay}s infinite`,
           }}
         />
@@ -105,7 +105,7 @@ export default function Hero() {
           bottom: 0,
           width: '420px',
           height: '70%',
-          background: 'radial-gradient(ellipse at center bottom, rgba(201,162,87,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center bottom, rgba(192,192,192,0.12) 0%, transparent 70%)',
         }}
       />
 
@@ -124,7 +124,7 @@ export default function Hero() {
         aria-hidden="true"
         style={{
           height: '2px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(201,162,87,0.3) 30%, rgba(201,162,87,0.6) 60%, rgba(201,162,87,0.2) 85%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(192,192,192,0.3) 30%, rgba(192,192,192,0.6) 60%, rgba(192,192,192,0.2) 85%, transparent 100%)',
         }}
       />
 
@@ -139,7 +139,7 @@ export default function Hero() {
             className="flex items-center gap-3 mb-8"
           >
             <div style={{ width: '40px', height: '1px', background: 'var(--gold)' }} />
-            <span className="section-label">Dubai&apos;s Premier Mortgage Broker</span>
+            <span className="section-label">UAE&apos;s Premier Mortgage Broker</span>
             <div style={{ width: '40px', height: '1px', background: 'var(--gold)' }} />
           </motion.div>
 
@@ -153,7 +153,7 @@ export default function Hero() {
           >
             <span style={{ color: '#F5F0E8' }}>Your Dream Home</span>
             <br />
-            <span className="gold-shimmer">In The Heart of Dubai</span>
+            <span className="gold-shimmer">In The Heart of UAE</span>
           </motion.h1>
 
           {/* Sub-headline */}
@@ -164,8 +164,8 @@ export default function Hero() {
             className="mb-10 max-w-xl leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', color: '#9BA5B4', fontFamily: 'Josefin Sans, sans-serif', letterSpacing: '0.03em' }}
           >
-            Access 25+ UAE banks, negotiate exclusive rates, and secure the mortgage
-            that fits your life — all with zero broker fees and dedicated expert guidance.
+            Access 18+ UAE banks, negotiate exclusive rates, and secure the mortgage
+            that fits your requirements — all with zero broker fees and dedicated expert guidance.
           </motion.p>
 
           {/* CTA buttons */}
@@ -227,7 +227,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
-        style={{ color: 'rgba(201,162,87,0.5)', zIndex: 10 }}
+        style={{ color: 'rgba(192,192,192,0.5)', zIndex: 10 }}
         aria-label="Scroll down to services"
       >
         <span style={{ fontSize: '0.6rem', letterSpacing: '0.3em', fontFamily: 'Josefin Sans', textTransform: 'uppercase' }}>Explore</span>
@@ -238,23 +238,6 @@ export default function Hero() {
           <ArrowDown size={16} />
         </motion.div>
       </motion.button>
-
-      {/* Rating badge */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 0.7 }}
-        className="absolute top-28 right-6 lg:right-12 hidden sm:flex flex-col items-center gap-1 z-10"
-        style={{ padding: '14px 18px', background: 'rgba(201,162,87,0.08)', border: '1px solid rgba(201,162,87,0.25)', borderRadius: '4px' }}
-      >
-        <div className="flex gap-0.5">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} size={11} fill="#C9A257" stroke="none" />
-          ))}
-        </div>
-        <span style={{ fontSize: '0.65rem', color: '#C9A257', letterSpacing: '0.1em', fontFamily: 'Josefin Sans' }}>RERA CERTIFIED</span>
-        <span style={{ fontSize: '0.6rem', color: '#7A8699', letterSpacing: '0.05em', fontFamily: 'Josefin Sans' }}>Trusted Broker</span>
-      </motion.div>
     </section>
   );
 }

@@ -8,9 +8,9 @@
   --navy: #0D1B3E;
   --navy-dark: #080F22;
   --navy-mid: #152247;
-  --gold: #C9A257;
-  --gold-light: #E8C97A;
-  --gold-dark: #A07C35;
+  --gold: #C0C0C0;
+  --gold-light: #E8E8E8;
+  --gold-dark: #8A8A8A;
   --off-white: #F5F0E8;
   --text-muted: #7A8699;
 }
@@ -34,7 +34,7 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
 
 .gold-text {
-  background: linear-gradient(135deg, #C9A257 0%, #E8C97A 50%, #A07C35 100%);
+  background: linear-gradient(135deg, #C0C0C0 0%, #E8E8E8 50%, #8A8A8A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -46,7 +46,7 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 }
 
 .gold-shimmer {
-  background: linear-gradient(90deg, #A07C35 0%, #E8C97A 40%, #C9A257 50%, #E8C97A 60%, #A07C35 100%);
+  background: linear-gradient(90deg, #8A8A8A 0%, #E8E8E8 40%, #C0C0C0 50%, #E8E8E8 60%, #8A8A8A 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -55,8 +55,8 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 }
 
 @keyframes tower-glow {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(201, 162, 87, 0.25)); }
-  50% { filter: drop-shadow(0 0 22px rgba(201, 162, 87, 0.65)); }
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(192, 192, 192, 0.25)); }
+  50% { filter: drop-shadow(0 0 22px rgba(192, 192, 192, 0.65)); }
 }
 
 .burj-glow { animation: tower-glow 4s ease-in-out infinite; }
@@ -76,7 +76,7 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
   background: rgba(8, 15, 34, 0.96) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 rgba(201, 162, 87, 0.2);
+  box-shadow: 0 1px 0 rgba(192, 192, 192, 0.2);
 }
 
 .gold-divider {
@@ -95,7 +95,7 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, #A07C35 0%, #E8C97A 50%, #C9A257 100%);
+  background: linear-gradient(135deg, #8A8A8A 0%, #E8E8E8 50%, #C0C0C0 100%);
   background-size: 200% auto;
   color: #080F22;
   font-family: 'Josefin Sans', sans-serif;
@@ -109,7 +109,7 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 .btn-gold:hover {
   background-position: right center;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(201, 162, 87, 0.4);
+  box-shadow: 0 8px 30px rgba(192, 192, 192, 0.4);
 }
 
 .btn-outline {
@@ -125,13 +125,13 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 }
 
 .btn-outline:hover {
-  background: rgba(201, 162, 87, 0.1);
+  background: rgba(192, 192, 192, 0.1);
   transform: translateY(-1px);
 }
 
 .input-field {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(201, 162, 87, 0.25);
+  border: 1px solid rgba(192, 192, 192, 0.25);
   color: var(--off-white);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.85rem;
@@ -143,12 +143,12 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
   border-radius: 2px;
 }
 
-.input-field:focus { border-color: var(--gold); background: rgba(201, 162, 87, 0.05); }
+.input-field:focus { border-color: var(--gold); background: rgba(192, 192, 192, 0.05); }
 .input-field::placeholder { color: var(--text-muted); }
 
 .rate-card {
   background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-  border: 1px solid rgba(201, 162, 87, 0.2);
+  border: 1px solid rgba(192, 192, 192, 0.2);
   transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
@@ -170,15 +170,15 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 
 .rate-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(201, 162, 87, 0.55);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 25px rgba(201, 162, 87, 0.08);
+  border-color: rgba(192, 192, 192, 0.55);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 25px rgba(192, 192, 192, 0.08);
 }
 
 .rate-card:hover::before { opacity: 1; }
 
 .service-card {
   background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(201, 162, 87, 0.15);
+  border: 1px solid rgba(192, 192, 192, 0.15);
   transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
@@ -190,14 +190,14 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(201, 162, 87, 0.07), transparent);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.07), transparent);
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
 }
 
 .service-card:hover {
-  border-color: rgba(201, 162, 87, 0.45);
+  border-color: rgba(192, 192, 192, 0.45);
   transform: translateY(-4px);
   box-shadow: 0 16px 35px rgba(0,0,0,0.3);
 }
@@ -217,14 +217,14 @@ h1, h2, h3, h4 { font-family: 'Cinzel', serif; }
 }
 
 .bank-card:hover {
-  background: rgba(201, 162, 87, 0.07);
-  border-color: rgba(201, 162, 87, 0.35);
+  background: rgba(192, 192, 192, 0.07);
+  border-color: rgba(192, 192, 192, 0.35);
   transform: scale(1.04);
 }
 
 .h-gold-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 162, 87, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.25), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
