@@ -45,7 +45,7 @@ function Stars() {
   );
 }
 
-function GoldParticles() {
+function SandParticles() {
   const particles = useRef<Array<{ x: number; size: number; duration: number; delay: number }>>([]);
 
   if (particles.current.length === 0) {
@@ -70,8 +70,34 @@ function GoldParticles() {
             bottom: '0',
             width: `${p.size}px`,
             height: `${p.size}px`,
-            background: 'rgba(192,192,192,0.7)',
+            background: 'rgba(212,165,116,0.8)',
             animation: `float-up ${p.duration}s linear ${p.delay}s infinite`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function SandStreams() {
+  const streams = Array.from({length: 12}, (_, i) => ({
+    top: 10 + i * 7,
+    delay: i * 0.8,
+    duration: 8 + (i % 4) * 3,
+    opacity: 0.06 + (i % 3) * 0.04,
+    height: 1 + (i % 3),
+  }));
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {streams.map((s, i) => (
+        <div
+          key={i}
+          className="absolute w-[200%]"
+          style={{
+            top: `${s.top}%`,
+            height: `${s.height}px`,
+            background: `linear-gradient(90deg, transparent 0%, rgba(212,165,116,${s.opacity}) 20%, rgba(240,200,120,${s.opacity * 1.5}) 50%, rgba(212,165,116,${s.opacity}) 80%, transparent 100%)`,
+            animation: `sand-drift ${s.duration}s linear ${s.delay}s infinite`,
           }}
         />
       ))}
@@ -91,10 +117,11 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #050C1E 0%, #0D1B3E 45%, #080F22 100%)' }}
+      style={{ background: 'linear-gradient(160deg, #050100 0%, #1A0C03 45%, #0D0600 100%)' }}
     >
       {mounted && <Stars />}
-      {mounted && <GoldParticles />}
+      {mounted && <SandParticles />}
+      {mounted && <SandStreams />}
 
       {/* Radial glow behind tower */}
       <div
@@ -105,7 +132,7 @@ export default function Hero() {
           bottom: 0,
           width: '420px',
           height: '70%',
-          background: 'radial-gradient(ellipse at center bottom, rgba(192,192,192,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center bottom, rgba(212,165,116,0.12) 0%, transparent 70%)',
         }}
       />
 
@@ -124,7 +151,7 @@ export default function Hero() {
         aria-hidden="true"
         style={{
           height: '2px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(192,192,192,0.3) 30%, rgba(192,192,192,0.6) 60%, rgba(192,192,192,0.2) 85%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(212,165,116,0.3) 30%, rgba(212,165,116,0.6) 60%, rgba(212,165,116,0.2) 85%, transparent 100%)',
         }}
       />
 
@@ -135,7 +162,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] }}
             className="flex items-center gap-3 mb-8"
           >
             <div style={{ width: '40px', height: '1px', background: 'var(--gold)' }} />
@@ -147,11 +174,11 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] }}
             className="font-bold leading-tight mb-6"
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)', fontFamily: 'Cinzel, serif' }}
           >
-            <span style={{ color: '#F5F0E8' }}>Your Dream Home</span>
+            <span style={{ color: '#F5E6C8' }}>Your Dream Home</span>
             <br />
             <span className="gold-shimmer">In The Heart of UAE</span>
           </motion.h1>
@@ -160,9 +187,9 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] }}
             className="mb-10 max-w-xl leading-relaxed"
-            style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', color: '#9BA5B4', fontFamily: 'Josefin Sans, sans-serif', letterSpacing: '0.03em' }}
+            style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', color: '#9B8570', fontFamily: 'Josefin Sans, sans-serif', letterSpacing: '0.03em' }}
           >
             Access 18+ UAE banks, negotiate exclusive rates, and secure the mortgage
             that fits your requirements — all with zero broker fees and dedicated expert guidance.
@@ -172,7 +199,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45, ease: 'easeOut' }}
+            transition={{ duration: 0.7, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] }}
             className="flex flex-wrap gap-4 mb-16"
           >
             <button
@@ -195,7 +222,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] }}
             className="grid grid-cols-2 sm:grid-cols-4 gap-6"
           >
             {stats.map((stat) => (
@@ -210,7 +237,7 @@ export default function Hero() {
                   {stat.value}
                 </span>
                 <span
-                  style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: '#7A8699', fontFamily: 'Josefin Sans, sans-serif', textTransform: 'uppercase' }}
+                  style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: '#9B8570', fontFamily: 'Josefin Sans, sans-serif', textTransform: 'uppercase' }}
                 >
                   {stat.label}
                 </span>
@@ -227,7 +254,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
-        style={{ color: 'rgba(192,192,192,0.5)', zIndex: 10 }}
+        style={{ color: 'rgba(212,165,116,0.5)', zIndex: 10 }}
         aria-label="Scroll down to services"
       >
         <span style={{ fontSize: '0.6rem', letterSpacing: '0.3em', fontFamily: 'Josefin Sans', textTransform: 'uppercase' }}>Explore</span>
@@ -238,6 +265,21 @@ export default function Hero() {
           <ArrowDown size={16} />
         </motion.div>
       </motion.button>
+
+      {/* Desert dune silhouette */}
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden" aria-hidden="true" style={{height: '120px', zIndex: 0}}>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style={{width:'100%',height:'100%'}}>
+          <defs>
+            <linearGradient id="duneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#3D1F0A" stopOpacity="0"/>
+              <stop offset="60%" stopColor="#1A0C03" stopOpacity="0.7"/>
+              <stop offset="100%" stopColor="#0D0600" stopOpacity="1"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,80 Q180,20 360,60 Q540,100 720,40 Q900,0 1080,50 Q1260,90 1440,30 L1440,120 L0,120 Z" fill="url(#duneGrad)"/>
+          <path d="M0,100 Q240,60 480,85 Q720,110 960,70 Q1200,40 1440,80 L1440,120 L0,120 Z" fill="#0D0600" opacity="0.8"/>
+        </svg>
+      </div>
     </section>
   );
 }

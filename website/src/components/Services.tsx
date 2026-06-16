@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Home, Building2, MapPin, Users, TrendingUp, RotateCcw, Layers, RefreshCw, UserX, Hammer, BarChart3, Moon } from 'lucide-react';
+import BurjAlArabSVG from './BurjAlArabSVG';
 
 const services = [
   { icon: Home, title: 'Residential Mortgage', desc: 'Bespoke home loan solutions for UAE residents and expats with competitive fixed and variable rates.' },
@@ -39,19 +40,28 @@ export default function Services() {
     <section
       id="services"
       className="py-28 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #080F22 0%, #0D1B3E 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #0D0600 0%, #1A0C03 100%)' }}
     >
       {/* Background grid lines */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         aria-hidden="true"
         style={{
-          backgroundImage: 'linear-gradient(rgba(192,192,192,1) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(212,165,116,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,165,116,1) 1px, transparent 1px)',
           backgroundSize: '80px 80px',
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      {/* BurjAlArab decorative landmark */}
+      <div
+        className="absolute bottom-0 right-0 pointer-events-none"
+        aria-hidden="true"
+        style={{ zIndex: 0, opacity: 0.15 }}
+      >
+        <BurjAlArabSVG className="burj-glow" size={180} />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -63,7 +73,7 @@ export default function Services() {
           <p className="section-label mb-4">What We Offer</p>
           <h2
             className="font-bold mb-5"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontFamily: 'Cinzel, serif', color: '#F5F0E8' }}
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontFamily: 'Cinzel, serif', color: '#F5E6C8' }}
           >
             Mortgage Solutions
             <br />
@@ -72,7 +82,7 @@ export default function Services() {
           <div className="gold-divider mb-5" />
           <p
             className="max-w-xl mx-auto leading-relaxed"
-            style={{ color: '#7A8699', fontSize: '0.9rem', letterSpacing: '0.04em', fontFamily: 'Josefin Sans' }}
+            style={{ color: '#9B8570', fontSize: '0.9rem', letterSpacing: '0.04em', fontFamily: 'Josefin Sans' }}
           >
             From first-time buyers to seasoned investors, we structure the right
             financing solution for every property ambition.
@@ -93,22 +103,22 @@ export default function Services() {
               <motion.div key={svc.title} variants={cardVariants} className="service-card group cursor-default">
                 <div
                   className="mb-4 w-11 h-11 flex items-center justify-center rounded-sm transition-colors duration-300"
-                  style={{ background: 'rgba(192,192,192,0.08)', border: '1px solid rgba(192,192,192,0.2)' }}
+                  style={{ background: 'rgba(212,165,116,0.08)', border: '1px solid rgba(212,165,116,0.2)' }}
                 >
                   <Icon
                     size={20}
                     className="transition-colors duration-300"
-                    style={{ color: '#C0C0C0' }}
+                    style={{ color: '#D4A574' }}
                     aria-hidden="true"
                   />
                 </div>
                 <h3
                   className="mb-2 font-semibold"
-                  style={{ fontSize: '0.85rem', fontFamily: 'Cinzel, serif', color: '#F5F0E8', letterSpacing: '0.05em' }}
+                  style={{ fontSize: '0.85rem', fontFamily: 'Cinzel, serif', color: '#F5E6C8', letterSpacing: '0.05em' }}
                 >
                   {svc.title}
                 </h3>
-                <p style={{ fontSize: '0.78rem', color: '#7A8699', lineHeight: 1.65, fontFamily: 'Josefin Sans' }}>
+                <p style={{ fontSize: '0.78rem', color: '#9B8570', lineHeight: 1.65, fontFamily: 'Josefin Sans' }}>
                   {svc.desc}
                 </p>
               </motion.div>

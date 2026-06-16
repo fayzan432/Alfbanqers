@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { TrendingDown } from 'lucide-react';
+import PalmJumeirahSVG from './PalmJumeirahSVG';
 
 const rates = [
   { label: 'Variable Rate', rate: '0.55%', sub: '+ 3M EIBOR', featured: true },
@@ -16,7 +17,7 @@ export default function Rates() {
     <section
       id="rates"
       className="py-28 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0D1B3E 0%, #080F22 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #1A0C03 0%, #0D0600 100%)' }}
     >
       {/* Decorative arc */}
       <div
@@ -29,11 +30,20 @@ export default function Rates() {
           width: '700px',
           height: '300px',
           borderRadius: '50%',
-          border: '1px solid rgba(192,192,192,0.07)',
+          border: '1px solid rgba(212,165,116,0.07)',
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      {/* Palm Jumeirah decorative landmark */}
+      <div
+        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+        aria-hidden="true"
+        style={{ zIndex: 0, opacity: 0.12 }}
+      >
+        <PalmJumeirahSVG size={200} />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -45,7 +55,7 @@ export default function Rates() {
           <p className="section-label mb-4">Live Market Rates</p>
           <h2
             className="font-bold mb-5"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontFamily: 'Cinzel, serif', color: '#F5F0E8' }}
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontFamily: 'Cinzel, serif', color: '#F5E6C8' }}
           >
             Mortgage Solutions
             <br />
@@ -54,7 +64,7 @@ export default function Rates() {
           <div className="gold-divider mb-5" />
           <p
             className="max-w-xl mx-auto leading-relaxed"
-            style={{ color: '#7A8699', fontSize: '0.88rem', letterSpacing: '0.04em', fontFamily: 'Josefin Sans' }}
+            style={{ color: '#9B8570', fontSize: '0.88rem', letterSpacing: '0.04em', fontFamily: 'Josefin Sans' }}
           >
             Our team works closely with you to understand your circumstances, then
             negotiates the best available rates across our network of 18+ lenders.
@@ -69,11 +79,11 @@ export default function Rates() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] }}
               className="rate-card w-full sm:w-[45%] lg:w-[18%]"
               style={r.featured ? {
-                background: 'linear-gradient(145deg, rgba(192,192,192,0.12), rgba(192,192,192,0.04))',
-                borderColor: 'rgba(192,192,192,0.5)',
+                background: 'linear-gradient(145deg, rgba(212,165,116,0.12), rgba(212,165,116,0.04))',
+                borderColor: 'rgba(212,165,116,0.5)',
               } : {}}
             >
               {r.featured && (
@@ -84,7 +94,7 @@ export default function Rates() {
               )}
               <TrendingDown
                 size={20}
-                style={{ color: '#C0C0C0', margin: '0 auto 12px', opacity: r.featured ? 1 : 0.5 }}
+                style={{ color: '#D4A574', margin: '0 auto 12px', opacity: r.featured ? 1 : 0.5 }}
                 aria-hidden="true"
               />
               <div
@@ -94,12 +104,12 @@ export default function Rates() {
                 {r.rate}
               </div>
               <div
-                style={{ fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.12em', fontFamily: 'Josefin Sans', textTransform: 'uppercase', marginBottom: '6px' }}
+                style={{ fontSize: '0.68rem', color: '#D4A574', letterSpacing: '0.12em', fontFamily: 'Josefin Sans', textTransform: 'uppercase', marginBottom: '6px' }}
               >
                 {r.sub}
               </div>
               <div
-                style={{ fontSize: '0.75rem', color: '#7A8699', letterSpacing: '0.05em', fontFamily: 'Josefin Sans' }}
+                style={{ fontSize: '0.75rem', color: '#9B8570', letterSpacing: '0.05em', fontFamily: 'Josefin Sans' }}
               >
                 {r.label}
               </div>

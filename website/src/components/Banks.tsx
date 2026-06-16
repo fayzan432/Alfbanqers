@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import DubaiFrameSVG from './DubaiFrameSVG';
 
 const banks = [
   'ADIB', 'Ajman Bank', 'Commercial Bank of Dubai', 'Dubai Islamic Bank',
@@ -15,9 +16,18 @@ export default function Banks() {
     <section
       id="banks"
       className="py-28 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0D1B3E 0%, #080F22 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #1A0C03 0%, #0D0600 100%)' }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      {/* Dubai Frame decorative landmark - left side */}
+      <div
+        className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none"
+        aria-hidden="true"
+        style={{ zIndex: 0, opacity: 0.12 }}
+      >
+        <DubaiFrameSVG size={160} />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left text */}
           <motion.div
@@ -29,17 +39,17 @@ export default function Banks() {
             <p className="section-label mb-4">Our Network</p>
             <h2
               className="font-bold mb-6"
-              style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontFamily: 'Cinzel, serif', color: '#F5F0E8', lineHeight: 1.25 }}
+              style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontFamily: 'Cinzel, serif', color: '#F5E6C8', lineHeight: 1.25 }}
             >
               We Work With All
               <br />
               <span className="gold-text">UAE Banks & Financial</span>
               <br />
-              <span style={{ color: '#F5F0E8' }}>Institutions</span>
+              <span style={{ color: '#F5E6C8' }}>Institutions</span>
             </h2>
             <div className="gold-divider" style={{ margin: '0 0 20px' }} />
             <p
-              style={{ color: '#7A8699', fontSize: '0.88rem', lineHeight: 1.75, fontFamily: 'Josefin Sans', letterSpacing: '0.04em', maxWidth: '420px' }}
+              style={{ color: '#9B8570', fontSize: '0.88rem', lineHeight: 1.75, fontFamily: 'Josefin Sans', letterSpacing: '0.04em', maxWidth: '420px' }}
             >
               Our clients describe us as a professional, knowledgeable team that
               guides them successfully through the complexities of the mortgage
@@ -55,7 +65,7 @@ export default function Banks() {
               ].map((s) => (
                 <div key={s.l} className="flex flex-col gap-1">
                   <span className="gold-text font-bold" style={{ fontSize: '1.4rem', fontFamily: 'Cinzel, serif' }}>{s.n}</span>
-                  <span style={{ fontSize: '0.7rem', color: '#7A8699', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'Josefin Sans' }}>{s.l}</span>
+                  <span style={{ fontSize: '0.7rem', color: '#9B8570', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'Josefin Sans' }}>{s.l}</span>
                 </div>
               ))}
             </div>
@@ -85,7 +95,7 @@ export default function Banks() {
                       fontSize: '0.62rem',
                       fontFamily: 'Josefin Sans, sans-serif',
                       fontWeight: 600,
-                      color: '#9BA5B4',
+                      color: '#9B8570',
                       letterSpacing: '0.05em',
                       textAlign: 'center',
                       lineHeight: 1.4,

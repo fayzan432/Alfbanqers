@@ -53,13 +53,13 @@ export default function Navbar() {
             <div className="flex flex-col items-start leading-none">
               <span
                 className="font-bold tracking-[0.2em]"
-                style={{ fontFamily: 'Cinzel, serif', color: '#F5F0E8', fontSize: '1.45rem' }}
+                style={{ fontFamily: 'Cinzel, serif', color: '#F5E6C8', fontSize: '1.45rem' }}
               >
                 ALF BANQ
               </span>
               <span
                 className="uppercase whitespace-nowrap"
-                style={{ color: '#C0C0C0', fontSize: '0.56rem', letterSpacing: '0.32em', marginTop: '4px' }}
+                style={{ color: '#D4A574', fontSize: '0.56rem', letterSpacing: '0.32em', marginTop: '4px' }}
               >
                 Mortgage Broker
               </span>
@@ -73,9 +73,9 @@ export default function Navbar() {
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
                 className="text-xs tracking-[0.2em] uppercase transition-colors duration-200 cursor-pointer"
-                style={{ color: '#9BA5B4', fontFamily: 'Josefin Sans, sans-serif', fontWeight: 500 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#C0C0C0')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#9BA5B4')}
+                style={{ color: '#9B8570', fontFamily: 'Josefin Sans, sans-serif', fontWeight: 500 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#D4A574')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#9B8570')}
               >
                 {link.label}
               </button>
@@ -87,7 +87,7 @@ export default function Navbar() {
             <a
               href={PHONE_TEL}
               className="flex items-center gap-2 text-xs tracking-wider uppercase transition-colors duration-200"
-              style={{ color: '#C0C0C0' }}
+              style={{ color: '#D4A574' }}
             >
               <Phone size={14} />
               <span style={{ fontFamily: 'Josefin Sans, sans-serif', fontWeight: 600 }}>{PHONE}</span>
@@ -103,7 +103,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             className="lg:hidden p-2 rounded-sm transition-colors duration-200"
-            style={{ color: '#C0C0C0' }}
+            style={{ color: '#D4A574' }}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
@@ -118,17 +118,17 @@ export default function Navbar() {
         className="lg:hidden overflow-hidden transition-all duration-400"
         style={{
           maxHeight: menuOpen ? '460px' : '0',
-          background: 'rgba(8, 15, 34, 0.98)',
+          background: 'rgba(13, 6, 0, 0.98)',
           backdropFilter: 'blur(20px)',
         }}
       >
-        <div className="px-6 py-6 flex flex-col gap-5" style={{ borderTop: '1px solid rgba(192,192,192,0.2)' }}>
+        <div className="px-6 py-6 flex flex-col gap-5" style={{ borderTop: '1px solid rgba(212,165,116,0.2)' }}>
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleNavClick(link.href)}
               className="text-left text-sm tracking-[0.2em] uppercase py-1 transition-colors duration-200"
-              style={{ color: '#9BA5B4', fontFamily: 'Josefin Sans, sans-serif' }}
+              style={{ color: '#9B8570', fontFamily: 'Josefin Sans, sans-serif' }}
             >
               {link.label}
             </button>

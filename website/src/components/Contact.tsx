@@ -27,7 +27,7 @@ export default function Contact() {
     <section
       id="contact"
       className="py-28 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #080F22 0%, #0D1B3E 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #0D0600 0%, #1A0C03 100%)' }}
     >
       {/* Corner decoration */}
       <div
@@ -36,7 +36,7 @@ export default function Contact() {
         style={{
           width: '300px',
           height: '300px',
-          background: 'radial-gradient(circle at top right, rgba(192,192,192,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle at top right, rgba(212,165,116,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -52,7 +52,7 @@ export default function Contact() {
             <p className="section-label mb-4">Get In Touch</p>
             <h2
               className="font-bold mb-5"
-              style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontFamily: 'Cinzel, serif', color: '#F5F0E8', lineHeight: 1.25 }}
+              style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontFamily: 'Cinzel, serif', color: '#F5E6C8', lineHeight: 1.25 }}
             >
               Start Your
               <br />
@@ -60,7 +60,7 @@ export default function Contact() {
             </h2>
             <div className="gold-divider" style={{ margin: '0 0 24px' }} />
             <p
-              style={{ color: '#7A8699', fontSize: '0.88rem', lineHeight: 1.75, fontFamily: 'Josefin Sans', maxWidth: '400px' }}
+              style={{ color: '#9B8570', fontSize: '0.88rem', lineHeight: 1.75, fontFamily: 'Josefin Sans', maxWidth: '400px' }}
             >
               Speak to one of our portfolio Manager today. We offer a no-obligation
               consultation to assess your eligibility and find the best mortgage
@@ -77,25 +77,25 @@ export default function Contact() {
                 <div key={label} className="flex items-start gap-4">
                   <div
                     className="w-10 h-10 flex items-center justify-center rounded-sm flex-shrink-0"
-                    style={{ background: 'rgba(192,192,192,0.08)', border: '1px solid rgba(192,192,192,0.2)' }}
+                    style={{ background: 'rgba(212,165,116,0.08)', border: '1px solid rgba(212,165,116,0.2)' }}
                   >
-                    <Icon size={16} style={{ color: '#C0C0C0' }} aria-hidden="true" />
+                    <Icon size={16} style={{ color: '#D4A574' }} aria-hidden="true" />
                   </div>
                   <div>
-                    <p style={{ fontSize: '0.65rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '2px' }}>
+                    <p style={{ fontSize: '0.65rem', color: '#D4A574', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '2px' }}>
                       {label}
                     </p>
                     {href ? (
                       <a
                         href={href}
-                        style={{ fontSize: '0.85rem', color: '#C8C0B0', fontFamily: 'Josefin Sans', transition: 'color 0.2s' }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = '#E8E8E8')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = '#C8C0B0')}
+                        style={{ fontSize: '0.85rem', color: '#F5E6C8', fontFamily: 'Josefin Sans', transition: 'color 0.2s' }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = '#F0C878')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = '#F5E6C8')}
                       >
                         {value}
                       </a>
                     ) : (
-                      <p style={{ fontSize: '0.85rem', color: '#C8C0B0', fontFamily: 'Josefin Sans' }}>{value}</p>
+                      <p style={{ fontSize: '0.85rem', color: '#F5E6C8', fontFamily: 'Josefin Sans' }}>{value}</p>
                     )}
                   </div>
                 </div>
@@ -116,18 +116,18 @@ export default function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center justify-center h-full min-h-[420px] gap-5 rounded-sm p-8 text-center"
-                style={{ border: '1px solid rgba(192,192,192,0.3)', background: 'rgba(192,192,192,0.04)' }}
+                style={{ border: '1px solid rgba(212,165,116,0.3)', background: 'rgba(212,165,116,0.04)' }}
               >
                 <div
                   className="w-16 h-16 rounded-full flex items-center justify-center"
-                  style={{ background: 'rgba(192,192,192,0.12)', border: '2px solid rgba(192,192,192,0.4)' }}
+                  style={{ background: 'rgba(212,165,116,0.12)', border: '2px solid rgba(212,165,116,0.4)' }}
                 >
-                  <Send size={28} style={{ color: '#C0C0C0' }} aria-hidden="true" />
+                  <Send size={28} style={{ color: '#D4A574' }} aria-hidden="true" />
                 </div>
-                <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '1.3rem', color: '#F5F0E8' }}>
+                <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '1.3rem', color: '#F5E6C8' }}>
                   Message Received
                 </h3>
-                <p style={{ color: '#7A8699', fontSize: '0.85rem', fontFamily: 'Josefin Sans', lineHeight: 1.7, maxWidth: '300px' }}>
+                <p style={{ color: '#9B8570', fontSize: '0.85rem', fontFamily: 'Josefin Sans', lineHeight: 1.7, maxWidth: '300px' }}>
                   Thank you for reaching out. One of our senior mortgage advisors
                   will be in touch within 24 hours.
                 </p>
@@ -144,16 +144,16 @@ export default function Contact() {
                 noValidate
                 aria-label="Mortgage enquiry form"
                 className="flex flex-col gap-4"
-                style={{ padding: '36px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(192,192,192,0.15)', borderRadius: '4px' }}
+                style={{ padding: '36px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(212,165,116,0.15)', borderRadius: '4px' }}
               >
                 <div
                   className="text-center mb-2"
-                  style={{ borderBottom: '1px solid rgba(192,192,192,0.12)', paddingBottom: '20px' }}
+                  style={{ borderBottom: '1px solid rgba(212,165,116,0.12)', paddingBottom: '20px' }}
                 >
-                  <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '1rem', color: '#F5F0E8', letterSpacing: '0.08em' }}>
+                  <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '1rem', color: '#F5E6C8', letterSpacing: '0.08em' }}>
                     Free Consultation Request
                   </h3>
-                  <p style={{ fontSize: '0.72rem', color: '#7A8699', fontFamily: 'Josefin Sans', letterSpacing: '0.05em', marginTop: '4px' }}>
+                  <p style={{ fontSize: '0.72rem', color: '#9B8570', fontFamily: 'Josefin Sans', letterSpacing: '0.05em', marginTop: '4px' }}>
                     No obligation — our service is completely free
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="name"
-                      style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                      style={{ display: 'block', fontSize: '0.68rem', color: '#D4A574', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                     >
                       Full Name *
                     </label>
@@ -181,7 +181,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="phone"
-                      style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                      style={{ display: 'block', fontSize: '0.68rem', color: '#D4A574', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                     >
                       Phone Number *
                     </label>
@@ -202,7 +202,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="email"
-                    style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                    style={{ display: 'block', fontSize: '0.68rem', color: '#D4A574', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                   >
                     Email Address *
                   </label>
@@ -222,7 +222,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="type"
-                    style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                    style={{ display: 'block', fontSize: '0.68rem', color: '#D4A574', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                   >
                     Mortgage Type
                   </label>
@@ -234,9 +234,9 @@ export default function Contact() {
                     className="input-field"
                     style={{ cursor: 'pointer' }}
                   >
-                    <option value="" style={{ background: '#0D1B3E' }}>Select mortgage type</option>
+                    <option value="" style={{ background: '#1A0C03' }}>Select mortgage type</option>
                     {loanTypes.map((t) => (
-                      <option key={t} value={t} style={{ background: '#0D1B3E' }}>{t}</option>
+                      <option key={t} value={t} style={{ background: '#1A0C03' }}>{t}</option>
                     ))}
                   </select>
                 </div>
@@ -244,7 +244,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    style={{ display: 'block', fontSize: '0.68rem', color: '#C0C0C0', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
+                    style={{ display: 'block', fontSize: '0.68rem', color: '#D4A574', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'Josefin Sans', marginBottom: '6px' }}
                   >
                     Message
                   </label>
