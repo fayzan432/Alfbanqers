@@ -213,15 +213,35 @@
     }
     .sand-stream {
       position: absolute;
-      height: 1px;
+      height: 1.5px;
       width: 30%;
-      background: linear-gradient(90deg, transparent, rgba(212,165,116,.18), transparent);
+      background: linear-gradient(90deg, transparent, rgba(212,165,116,.45), transparent);
       border-radius: 2px;
+    }
+    .sand-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .sand-grain {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #F0C878 0%, #D4A574 70%, transparent 100%);
+      box-shadow: 0 0 4px rgba(240,200,120,.6);
+    }
+    @keyframes grainRise {
+      0% { transform: translate(0, 0); opacity: 0; }
+      10% { opacity: 1; }
+      50% { transform: translate(var(--dx), -50vh); }
+      90% { opacity: .8; }
+      100% { transform: translate(calc(var(--dx) * 2), -100vh); opacity: 0; }
     }
     @keyframes sandFlow {
       0% { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
       10% { opacity: 1; }
-      90% { opacity: .6; }
+      90% { opacity: .85; }
       100% { transform: translateX(350%) skewX(-15deg); opacity: 0; }
     }
     .hero-inner {
@@ -290,7 +310,7 @@
       right: -20px;
       top: 50%;
       transform: translateY(-50%);
-      opacity: .09;
+      opacity: .35;
       pointer-events: none;
       z-index: 0;
     }
@@ -357,7 +377,7 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      opacity: .06;
+      opacity: .3;
       pointer-events: none;
       z-index: 0;
     }
@@ -429,7 +449,7 @@
       position: absolute;
       right: -30px;
       bottom: 20px;
-      opacity: .07;
+      opacity: .32;
       pointer-events: none;
       z-index: 0;
     }
@@ -495,7 +515,7 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      opacity: .07;
+      opacity: .3;
       pointer-events: none;
       z-index: 0;
     }
@@ -887,6 +907,8 @@
   <div class="hero-stars" id="heroStars" aria-hidden="true"></div>
   <!-- Sand Streams -->
   <div class="sand-streams" id="sandStreams" aria-hidden="true"></div>
+  <!-- Sand Particles -->
+  <div class="sand-particles" id="sandParticles" aria-hidden="true"></div>
 
   <div class="container">
     <div class="hero-inner">
@@ -1738,6 +1760,25 @@
   const starStyle = document.createElement('style');
   starStyle.textContent = '@keyframes starTwinkle{0%,100%{opacity:.1;transform:scale(1);}50%{opacity:.7;transform:scale(1.4);}}';
   document.head.appendChild(starStyle);
+
+  // ===== SAND PARTICLES =====
+  (function generateSandGrains() {
+    const container = document.getElementById('sandParticles');
+    const count = 70;
+    for (let i = 0; i < count; i++) {
+      const grain = document.createElement('div');
+      grain.className = 'sand-grain';
+      const size = Math.random() * 3 + 1.5;
+      const x = Math.random() * 100;
+      const y = 50 + Math.random() * 50;
+      const dx = (Math.random() * 80 - 40) + 'px';
+      const dur = Math.random() * 10 + 8;
+      const delay = Math.random() * 12;
+      const opacity = Math.random() * 0.5 + 0.4;
+      grain.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + '%;top:' + y + '%;--dx:' + dx + ';opacity:' + opacity + ';animation:grainRise ' + dur + 's ' + delay + 's linear infinite;';
+      container.appendChild(grain);
+    }
+  })();
 
   // ===== SAND STREAMS =====
   (function generateSandStreams() {
