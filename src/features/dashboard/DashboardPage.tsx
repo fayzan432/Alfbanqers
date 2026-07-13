@@ -16,6 +16,8 @@ import { CATEGORY_META, DIFFICULTY_META } from '@/features/goals/goalMeta'
 import { useFoodEntries } from '@/features/nutrition/useNutrition'
 import { useWaterEntries } from '@/features/water/useWater'
 import { useWeightEntries } from '@/features/weight/useWeight'
+import { useWorkouts } from '@/features/workouts/useWorkouts'
+import { WORKOUT_TYPE_META } from '@/features/workouts/workoutMeta'
 import { localDateKey, formatDisplayDate } from '@/utils/date'
 import { displayVolume, displayWeight } from '@/utils/units'
 
@@ -41,10 +43,12 @@ export function DashboardPage() {
   const { data: foodEntries } = useFoodEntries(today)
   const { data: waterEntries } = useWaterEntries(today)
   const { data: weightEntries } = useWeightEntries()
+  const { data: workouts } = useWorkouts()
 
   const caloriesConsumed = (foodEntries ?? []).reduce((sum, e) => sum + Number(e.calories), 0)
   const waterConsumed = (waterEntries ?? []).reduce((sum, e) => sum + e.amount_ml, 0)
   const latestWeight = weightEntries?.[0]
+  const todaysWorkouts = (workouts ?? []).filter((w) => w.date === today)
 
   const handleComplete = async (goalId: string) => {
     const goal = activeGoals.find((g) => g.id === goalId)
@@ -191,8 +195,27 @@ export function DashboardPage() {
         <Panel>
           <PanelHeader>
             <PanelTitle>Today's Workout</PanelTitle>
+            <Link to="/workouts" className="text-xs font-medium text-arcane-400 hover:text-arcane-300">
+              View all
+            </Link>
           </PanelHeader>
-          <EmptyState icon={Dumbbell} title="No workout logged" description="Log a workout to build your Strength and Endurance." />
+          {todaysWorkouts.length === 0 ? (
+            <EmptyState icon={Dumbbell} title="No workout logged" description="Log a workout to build your Strength and Endurance." />
+          ) : (
+            <ul className="flex flex-col gap-2">
+              {todaysWorkouts.map((workout) => {
+                const Icon = WORKOUT_TYPE_META[workout.workout_type].icon
+                return (
+                  <li key={workout.id} className="flex items-center gap-3 rounded-lg border border-white/5 bg-void-800/50 px-3 py-2">
+                    <Icon className="size-4 shrink-0 text-arcane-400" aria-hidden />
+                    <span className="min-w-0 flex-1 truncate text-sm text-slate-200">{workout.name}</span>
+                    <span className="shrink-0 text-[11px] text-slate-500">{workout.duration_minutes} min</span>
+                    {workout.completed && <CheckCircle2 className="size-4 shrink-0 text-verdant-500" aria-hidden />}
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </Panel>
 
         <Panel>
