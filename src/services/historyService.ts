@@ -1,6 +1,19 @@
 import { supabase } from '@/lib/supabase'
 import type { ActivityHistoryEntry, ActivityHistoryType } from '@/types/database'
 
+export interface LogActivityInput {
+  activity_type: ActivityHistoryType
+  title: string
+  description?: string | null
+  category?: string | null
+  metadata?: Record<string, unknown> | null
+}
+
+export async function logActivity(userId: string, input: LogActivityInput): Promise<void> {
+  const { error } = await supabase.from('activity_history').insert({ user_id: userId, ...input })
+  if (error) throw error
+}
+
 export interface HistoryFilters {
   type?: ActivityHistoryType
   category?: string

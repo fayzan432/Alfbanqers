@@ -13,6 +13,11 @@ import { LevelUpModal, type LevelUpEvent } from '@/features/player/LevelUpModal'
 import { MOTIVATIONAL_MESSAGES } from './motivation'
 import { useCompleteGoal, useCompletionStatusMap, useGoalCompletions, useGoals } from '@/features/goals/useGoals'
 import { CATEGORY_META, DIFFICULTY_META } from '@/features/goals/goalMeta'
+import { useFoodEntries } from '@/features/nutrition/useNutrition'
+import { useWaterEntries } from '@/features/water/useWater'
+import { useWeightEntries } from '@/features/weight/useWeight'
+import { localDateKey, formatDisplayDate } from '@/utils/date'
+import { displayVolume, displayWeight } from '@/utils/units'
 
 export function DashboardPage() {
   const { profile } = useProfile()
@@ -30,6 +35,16 @@ export function DashboardPage() {
   const activeGoals = (goals ?? []).filter((g) => g.status === 'active')
   const pendingToday = activeGoals.filter((g) => !completionMap.get(g.id))
   const completedToday = activeGoals.filter((g) => completionMap.get(g.id))
+
+  const today = localDateKey()
+  const units = profile?.unit_system ?? 'metric'
+  const { data: foodEntries } = useFoodEntries(today)
+  const { data: waterEntries } = useWaterEntries(today)
+  const { data: weightEntries } = useWeightEntries()
+
+  const caloriesConsumed = (foodEntries ?? []).reduce((sum, e) => sum + Number(e.calories), 0)
+  const waterConsumed = (waterEntries ?? []).reduce((sum, e) => sum + e.amount_ml, 0)
+  const latestWeight = weightEntries?.[0]
 
   const handleComplete = async (goalId: string) => {
     const goal = activeGoals.find((g) => g.id === goalId)
@@ -183,22 +198,60 @@ export function DashboardPage() {
         <Panel>
           <PanelHeader>
             <PanelTitle>Nutrition</PanelTitle>
+            <Link to="/nutrition" className="text-xs font-medium text-arcane-400 hover:text-arcane-300">
+              Log food
+            </Link>
           </PanelHeader>
-          <EmptyState icon={Apple} title="No meals logged" description="Track your calories and macros to see progress here." />
+          {!foodEntries || foodEntries.length === 0 ? (
+            <EmptyState icon={Apple} title="No meals logged" description="Track your calories and macros to see progress here." />
+          ) : (
+            <ProgressBar
+              label={`${Math.round(caloriesConsumed)} / ${profile?.daily_calorie_goal ?? 0} kcal`}
+              value={caloriesConsumed}
+              max={profile?.daily_calorie_goal ?? 1}
+              colorFrom="#22c55e"
+              colorTo="#4ade80"
+              showPercent
+            />
+          )}
         </Panel>
 
         <Panel>
           <PanelHeader>
             <PanelTitle>Water Intake</PanelTitle>
+            <Link to="/water" className="text-xs font-medium text-arcane-400 hover:text-arcane-300">
+              Log water
+            </Link>
           </PanelHeader>
-          <EmptyState icon={Droplets} title="No water logged" description="Log water to build your hydration streak." />
+          {!waterEntries || waterEntries.length === 0 ? (
+            <EmptyState icon={Droplets} title="No water logged" description="Log water to build your hydration streak." />
+          ) : (
+            <ProgressBar
+              label={`${displayVolume(waterConsumed, units)} / ${displayVolume(profile?.daily_water_goal_ml ?? 0, units)}`}
+              value={waterConsumed}
+              max={profile?.daily_water_goal_ml ?? 1}
+              colorFrom="#3b82f6"
+              colorTo="#22d3ee"
+              showPercent
+            />
+          )}
         </Panel>
 
         <Panel>
           <PanelHeader>
             <PanelTitle>Latest Weight</PanelTitle>
+            <Link to="/weight" className="text-xs font-medium text-arcane-400 hover:text-arcane-300">
+              Update
+            </Link>
           </PanelHeader>
-          <EmptyState icon={Scale} title="No weight entries" description="Add a weight entry to start your progress chart." />
+          {!latestWeight ? (
+            <EmptyState icon={Scale} title="No weight entries" description="Add a weight entry to start your progress chart." />
+          ) : (
+            <div>
+              <p className="font-display text-2xl font-bold text-slate-100">{displayWeight(latestWeight.weight_kg, units)}</p>
+              <p className="text-xs text-slate-500">on {formatDisplayDate(latestWeight.date)}</p>
+            </div>
+          )}
         </Panel>
       </div>
 
