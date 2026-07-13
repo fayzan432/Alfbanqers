@@ -1,0 +1,202 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cinzel', 'Georgia', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-void-950: #05050a;
+  --color-void-900: #0a0a14;
+  --color-void-800: #10101c;
+  --color-void-700: #16161f;
+  --color-void-600: #1d1d2c;
+  --color-void-500: #262638;
+
+  --color-arcane-300: #c4b5fd;
+  --color-arcane-400: #a78bfa;
+  --color-arcane-500: #8b5cf6;
+  --color-arcane-600: #7c3aed;
+  --color-arcane-700: #6d28d9;
+
+  --color-cyan-glow: #22d3ee;
+  --color-blue-glow: #3b82f6;
+  --color-gold-300: #fde68a;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #d4a017;
+
+  --color-ember-500: #ef4444;
+  --color-verdant-500: #22c55e;
+
+  --animate-glow-pulse: glow-pulse 2.4s ease-in-out infinite;
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-level-burst: level-burst 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-shimmer: shimmer 2.5s linear infinite;
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.55;
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(1.35);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  @keyframes level-burst {
+    0% {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    40% {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, #14141f 0%, #05050a 60%);
+  color: #e5e4f0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+::selection {
+  background: var(--color-arcane-600);
+  color: white;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-void-500);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-arcane-700);
+}
+
+/* Focus visibility for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-cyan-glow);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reusable glow utilities */
+.glow-border {
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.08) inset,
+    0 0 18px rgba(139, 92, 246, 0.15);
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(29, 29, 44, 0.75), rgba(16, 16, 28, 0.75));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+}
+
+.text-glow {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+}
+
+.shimmer-bg {
+  background: linear-gradient(
+    110deg,
+    rgba(139, 92, 246, 0.08) 0%,
+    rgba(196, 181, 253, 0.25) 40%,
+    rgba(139, 92, 246, 0.08) 60%
+  );
+  background-size: 200% 100%;
+}
+
+/* Light theme override */
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='light'] body {
+  background: radial-gradient(ellipse at top, #f5f3ff 0%, #ffffff 60%);
+  color: #1e1b2e;
+}
+:root[data-theme='light'] .panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 243, 255, 0.9));
+  border: 1px solid rgba(124, 58, 237, 0.15);
+}
