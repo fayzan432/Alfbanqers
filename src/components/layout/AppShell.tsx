@@ -17,7 +17,7 @@ export function AppShell() {
       <div className="flex min-w-0 flex-1 flex-col">
         <OfflineBanner />
         <TopBar />
-        <main className="flex-1 px-4 pb-24 pt-4 sm:px-6 lg:pb-8">
+        <main id="main-content" tabIndex={-1} className="flex-1 px-4 pb-24 pt-4 sm:px-6 lg:pb-8">
           <Outlet />
         </main>
       </div>

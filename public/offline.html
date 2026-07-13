@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline — Level Up</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: radial-gradient(ellipse at top, #14141f 0%, #05050a 60%);
+        color: #e5e4f0;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        text-align: center;
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        color: #f3f4f6;
+      }
+      p {
+        max-width: 24rem;
+        color: #9ca3af;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+      button {
+        margin-top: 0.5rem;
+        background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>You're offline</h1>
+    <p>LEVEL UP MULLICK needs an internet connection to sync your progress. Reconnect and try again.</p>
+    <button onclick="location.reload()">Retry</button>
+  </body>
+</html>
