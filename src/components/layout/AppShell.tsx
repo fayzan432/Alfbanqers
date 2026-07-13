@@ -5,6 +5,8 @@ import { BottomNav } from './BottomNav'
 import { MoreSheet } from './MoreSheet'
 import { TopBar } from './TopBar'
 import { OfflineBanner } from './OfflineBanner'
+import { AchievementUnlockWatcher } from '@/features/achievements/AchievementUnlockWatcher'
+import { ReminderNotifier } from '@/features/reminders/ReminderNotifier'
 
 export function AppShell() {
   const [moreOpen, setMoreOpen] = useState(false)
@@ -21,6 +23,8 @@ export function AppShell() {
       </div>
       <BottomNav onOpenMore={() => setMoreOpen(true)} />
       <MoreSheet open={moreOpen} onClose={() => setMoreOpen(false)} />
+      <AchievementUnlockWatcher />
+      <ReminderNotifier />
     </div>
   )
 }

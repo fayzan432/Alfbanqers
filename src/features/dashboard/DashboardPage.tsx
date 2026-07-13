@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Swords, Dumbbell, Apple, Droplets, Scale, CheckCircle2, Plus, CheckCircle } from 'lucide-react'
+import { Swords, Dumbbell, Apple, Droplets, Scale, CheckCircle2, Plus, CheckCircle, Trophy, Bell } from 'lucide-react'
 import { Panel, PanelHeader, PanelTitle } from '@/components/ui/Panel'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { EmptyState } from '@/components/ui/EmptyState'
@@ -18,6 +18,11 @@ import { useWaterEntries } from '@/features/water/useWater'
 import { useWeightEntries } from '@/features/weight/useWeight'
 import { useWorkouts } from '@/features/workouts/useWorkouts'
 import { WORKOUT_TYPE_META } from '@/features/workouts/workoutMeta'
+import { useAchievementCatalog, useUserAchievements } from '@/features/achievements/useAchievements'
+import { iconForAchievement } from '@/features/achievements/achievementMeta'
+import { useReminders } from '@/features/reminders/useReminders'
+import { isUpcomingToday } from '@/features/reminders/reminderRecurrence'
+import { REMINDER_TYPE_META } from '@/features/reminders/reminderMeta'
 import { localDateKey, formatDisplayDate } from '@/utils/date'
 import { displayVolume, displayWeight } from '@/utils/units'
 
@@ -44,6 +49,17 @@ export function DashboardPage() {
   const { data: waterEntries } = useWaterEntries(today)
   const { data: weightEntries } = useWeightEntries()
   const { data: workouts } = useWorkouts()
+  const { data: achievementCatalog } = useAchievementCatalog()
+  const { data: userAchievements } = useUserAchievements()
+  const { data: reminders } = useReminders()
+
+  const recentAchievements = [...(userAchievements ?? [])]
+    .sort((a, b) => b.unlocked_at.localeCompare(a.unlocked_at))
+    .slice(0, 3)
+    .map((ua) => achievementCatalog?.find((a) => a.id === ua.achievement_id))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a))
+
+  const upcomingReminders = (reminders ?? []).filter((r) => isUpcomingToday(r)).slice(0, 5)
 
   const caloriesConsumed = (foodEntries ?? []).reduce((sum, e) => sum + Number(e.calories), 0)
   const waterConsumed = (waterEntries ?? []).reduce((sum, e) => sum + e.amount_ml, 0)
@@ -274,6 +290,54 @@ export function DashboardPage() {
               <p className="font-display text-2xl font-bold text-slate-100">{displayWeight(latestWeight.weight_kg, units)}</p>
               <p className="text-xs text-slate-500">on {formatDisplayDate(latestWeight.date)}</p>
             </div>
+          )}
+        </Panel>
+        <Panel>
+          <PanelHeader>
+            <PanelTitle>Recent Achievements</PanelTitle>
+            <Link to="/achievements" className="text-xs font-medium text-arcane-400 hover:text-arcane-300">
+              View all
+            </Link>
+          </PanelHeader>
+          {recentAchievements.length === 0 ? (
+            <EmptyState icon={Trophy} title="No achievements yet" description="Complete quests and workouts to unlock achievements." />
+          ) : (
+            <ul className="flex flex-col gap-2">
+              {recentAchievements.map((achievement) => {
+                const Icon = iconForAchievement(achievement.icon)
+                return (
+                  <li key={achievement.id} className="flex items-center gap-3 rounded-lg border border-gold-500/20 bg-gold-500/5 px-3 py-2">
+                    <Icon className="size-4 shrink-0 text-gold-400" aria-hidden />
+                    <span className="min-w-0 flex-1 truncate text-sm text-slate-200">{achievement.name}</span>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+        </Panel>
+
+        <Panel>
+          <PanelHeader>
+            <PanelTitle>Upcoming Reminders</PanelTitle>
+            <Link to="/reminders" className="text-xs font-medium text-arcane-400 hover:text-arcane-300">
+              Manage
+            </Link>
+          </PanelHeader>
+          {upcomingReminders.length === 0 ? (
+            <EmptyState icon={Bell} title="No reminders today" description="Create a reminder to stay on track." />
+          ) : (
+            <ul className="flex flex-col gap-2">
+              {upcomingReminders.map((reminder) => {
+                const Icon = REMINDER_TYPE_META[reminder.reminder_type].icon
+                return (
+                  <li key={reminder.id} className="flex items-center gap-3 rounded-lg border border-white/5 bg-void-800/50 px-3 py-2">
+                    <Icon className="size-4 shrink-0 text-arcane-400" aria-hidden />
+                    <span className="min-w-0 flex-1 truncate text-sm text-slate-200">{reminder.title}</span>
+                    <span className="shrink-0 text-[11px] text-slate-500">{reminder.time.slice(0, 5)}</span>
+                  </li>
+                )
+              })}
+            </ul>
           )}
         </Panel>
       </div>

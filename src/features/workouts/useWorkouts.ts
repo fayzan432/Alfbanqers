@@ -99,6 +99,7 @@ export function useCompleteWorkout() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [WORKOUTS_KEY] }),
         queryClient.invalidateQueries({ queryKey: ['activity_history'] }),
+        queryClient.invalidateQueries({ queryKey: ['user_achievements'] }),
         refresh(),
       ])
     },

@@ -108,6 +108,7 @@ export function useCompleteGoal() {
         queryClient.invalidateQueries({ queryKey: GOALS_KEY }),
         queryClient.invalidateQueries({ queryKey: COMPLETIONS_KEY }),
         queryClient.invalidateQueries({ queryKey: ['activity_history'] }),
+        queryClient.invalidateQueries({ queryKey: ['user_achievements'] }),
         refresh(),
       ])
     },

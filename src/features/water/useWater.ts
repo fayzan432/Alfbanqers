@@ -48,6 +48,7 @@ export function useAddWater() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [WATER_KEY] }),
         queryClient.invalidateQueries({ queryKey: ['activity_history'] }),
+        queryClient.invalidateQueries({ queryKey: ['user_achievements'] }),
         refresh(),
       ])
     },

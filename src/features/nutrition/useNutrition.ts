@@ -62,6 +62,7 @@ export function useAddFoodEntry() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [FOOD_KEY] }),
         queryClient.invalidateQueries({ queryKey: ['activity_history'] }),
+        queryClient.invalidateQueries({ queryKey: ['user_achievements'] }),
         refresh(),
       ])
     },
