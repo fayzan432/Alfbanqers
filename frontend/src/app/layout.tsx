@@ -4,6 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "JARVIS",
   description: "A production-grade personal AI assistant.",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
