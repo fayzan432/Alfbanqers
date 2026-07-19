@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html,
+body {
+  background-color: #04070d;
+  color: #e6f1f5;
+  height: 100%;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1c2b3a #04070d;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #1c2b3a;
+  border-radius: 8px;
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(10, 16, 24, 0.85) 0%, rgba(6, 10, 16, 0.92) 100%);
+  border: 1px solid rgba(0, 217, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.glow-text {
+  text-shadow: 0 0 12px currentColor;
+}
+
+.scan-line {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 217, 255, 0.03) 0px,
+    rgba(0, 217, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
