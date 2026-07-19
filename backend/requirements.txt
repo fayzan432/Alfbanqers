@@ -1,0 +1,63 @@
+# --- Web framework ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+websockets==13.1
+
+# --- Config / validation ---
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# --- Database ---
+sqlalchemy==2.0.35
+alembic==1.13.2
+psycopg[binary]==3.2.2
+aiosqlite==0.20.0
+
+# --- Auth ---
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.0
+
+# --- AI providers ---
+openai==1.51.0
+anthropic==0.34.2
+httpx==0.27.2
+
+# --- Memory / embeddings ---
+chromadb==0.5.5
+sentence-transformers==3.1.1
+numpy==1.26.4
+
+# --- Speech ---
+faster-whisper==1.0.3
+edge-tts==6.1.12
+pyttsx3==2.90
+sounddevice==0.5.1
+soundfile==0.12.1
+
+# --- Vision ---
+opencv-python-headless==4.10.0.84
+pytesseract==0.3.13
+Pillow==10.4.0
+mss==9.0.2
+
+# --- Automation ---
+pyautogui==0.9.54
+playwright==1.47.0
+
+# --- System monitoring ---
+psutil==6.0.0
+
+# --- Email ---
+aiosmtplib==3.0.2
+
+# --- Security ---
+cryptography==43.0.1
+
+# --- Utilities ---
+python-dotenv==1.0.1
+tenacity==9.0.0
+loguru==0.7.2
+apscheduler==3.10.4
+markdown==3.7

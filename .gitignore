@@ -1,0 +1,50 @@
+# --- Python / Backend ---
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backend/data/
+backend/*.db
+backend/*.sqlite3
+backend/chroma_data/
+backend/uploads/
+backend/logs/
+backend/.env
+
+# --- Node / Frontend ---
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.env*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.turbo/
+
+# --- Env / secrets ---
+.env
+.env.local
+*.pem
+*.key
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Docker ---
+docker/volumes/
+
+# --- Misc ---
+*.log
+dist/
+coverage/
