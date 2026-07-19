@@ -1,0 +1,8 @@
+{
+  "slug": "datetime_tools",
+  "name": "Date, Time & Calculator Tools",
+  "description": "Example built-in plugin: current date/time lookups and a safe arithmetic calculator. Demonstrates the plugin API — copy this folder to build your own skill.",
+  "version": "1.0.0",
+  "permissions": [],
+  "entry_point": "plugin.py"
+}

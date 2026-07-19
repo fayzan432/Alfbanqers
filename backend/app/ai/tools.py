@@ -40,6 +40,13 @@ class ToolRegistry:
     def register(self, definition: ToolDefinition, handler: ToolHandler, destructive: bool = False) -> None:
         self._tools[definition.name] = RegisteredTool(definition=definition, handler=handler, destructive=destructive)
 
+    def unregister(self, name: str) -> None:
+        self._tools.pop(name, None)
+
+    def unregister_prefix_owned_by(self, names: list[str]) -> None:
+        for name in names:
+            self.unregister(name)
+
     def get(self, name: str) -> RegisteredTool | None:
         return self._tools.get(name)
 
@@ -67,3 +74,4 @@ def ensure_tools_loaded() -> None:
     from app.automation import tools as _automation_tools  # noqa: F401
     from app.vision import tools as _vision_tools  # noqa: F401
     from app.services import system_tools as _system_tools  # noqa: F401
+    from app.services import email_tools as _email_tools  # noqa: F401

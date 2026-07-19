@@ -37,7 +37,9 @@ sounddevice==0.5.1
 soundfile==0.12.1
 
 # --- Vision ---
-opencv-python-headless==4.10.0.84
+# opencv-contrib-python-headless includes cv2.face (LBPH recognizer) for the
+# free, offline face-recognition path used in app/vision/face.py.
+opencv-contrib-python-headless==4.10.0.84
 pytesseract==0.3.13
 Pillow==10.4.0
 mss==9.0.2
@@ -48,6 +50,7 @@ playwright==1.47.0
 
 # --- System monitoring ---
 psutil==6.0.0
+pynvml==11.5.3
 
 # --- Email ---
 aiosmtplib==3.0.2
