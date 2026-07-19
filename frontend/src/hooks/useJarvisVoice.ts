@@ -102,6 +102,13 @@ export function useJarvisVoice() {
     return stream;
   }, []);
 
+  const stopUtteranceRecording = useCallback(() => {
+    if (utteranceTimeoutRef.current) clearTimeout(utteranceTimeoutRef.current);
+    if (recorderRef.current && recorderRef.current.state === "recording") {
+      recorderRef.current.stop();
+    }
+  }, []);
+
   // --- Amplitude feed loop (drives the orb while listening) ---
   const startAmplitudeLoop = useCallback(() => {
     const dataArray = new Uint8Array(analyserRef.current?.fftSize ?? 1024);
@@ -128,7 +135,7 @@ export function useJarvisVoice() {
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
-  }, [setAmplitude]);
+  }, [setAmplitude, stopUtteranceRecording]);
 
   useEffect(() => {
     startAmplitudeLoop();
@@ -203,15 +210,7 @@ export function useJarvisVoice() {
     recorder.start();
 
     utteranceTimeoutRef.current = setTimeout(() => stopUtteranceRecording(), MAX_UTTERANCE_MS);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ensureMic, setOrbState]);
-
-  const stopUtteranceRecording = useCallback(() => {
-    if (utteranceTimeoutRef.current) clearTimeout(utteranceTimeoutRef.current);
-    if (recorderRef.current && recorderRef.current.state === "recording") {
-      recorderRef.current.stop();
-    }
-  }, []);
+  }, [ensureMic, setOrbState, stopUtteranceRecording]);
 
   // --- TTS playback (drives orb "speaking" state + amplitude) ---
   const playTtsAudio = useCallback(

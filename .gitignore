@@ -28,6 +28,7 @@ frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
 frontend/.turbo/
+frontend/tsconfig.tsbuildinfo
 
 # --- Env / secrets ---
 .env
